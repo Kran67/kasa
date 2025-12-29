@@ -24,7 +24,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className={`${inter.variable} antialiased items-center flex pt-40 px-140`}>
+      <body className={`${inter.variable} antialiased items-center flex`}>
         {children}
         {/* <UserProvider initialUser={user}>
           <CookiesProvider>{children}</CookiesProvider>

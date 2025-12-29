@@ -16,7 +16,7 @@ export default function Header({ activeMenu }: HeaderProps) {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
 
     return (
-        <header className="flex w-full md:w-782 h-85 md:h-56 rounded-[10px] bg-(--white) py-8 px-100 items-center justify-between">
+        <header className="flex w-full md:w-782 h-85 md:h-56 rounded-[10px] bg-(--white) py-8 px-100 items-center justify-between font-normal">
             <Logo size={LogoSizes.Small} className="flex md:hidden" />
             <MenuItem
                 text="Accueil"
