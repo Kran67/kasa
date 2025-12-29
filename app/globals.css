@@ -14,7 +14,7 @@
 }
 
 body {
-  background: var(--white);
+  background: var(--light-orange);
   color: var(--black);
   font-family: var(--font-inter);
   font-weight: 500;
