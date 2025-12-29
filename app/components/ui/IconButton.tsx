@@ -75,7 +75,7 @@ export default function IconButton({ icon, className, onClick, url, imgWidth, im
 
     return (
         <button
-            className={className}
+            className={"cursor-pointer " + className}
             onClick={handleClick}
             role="button">
             {renderSwitch()}{text}

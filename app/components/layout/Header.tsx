@@ -16,13 +16,14 @@ export default function Header({ activeMenu }: HeaderProps) {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
 
     return (
-        <header className="flex w-full md:w-782 h-85 md:h-56 rounded-[10px] bg-(--white) py-8 px-100 items-center justify-between font-normal">
+        <header
+            className="flex w-full md:w-782 h-85 md:h-56 rounded-[10px] bg-(--white) md:py-8 md:px-100 items-center justify-between font-normal p-16">
             <Logo size={LogoSizes.Small} className="flex md:hidden" />
             <MenuItem
                 text="Accueil"
                 isActive={activeMenu === HeaderMenuItems.Home}
                 url="/"
-                className="hidden md:flex text-sm cursor-pointer hover:text-(--main-red) hover:font-bold" />
+                className="hidden md:flex text-sm cursor-pointer hover:text-(--main-red) hover:font-bold w-51" />
             <MenuItem
                 text="À propos"
                 isActive={activeMenu === HeaderMenuItems.About}
@@ -49,13 +50,25 @@ export default function Header({ activeMenu }: HeaderProps) {
                         svgStroke="#99331A" />
                 </div>
             </div>
-            <IconButton icon={IconButtonImages.Menu} className="md:hidden" imgWidth={0} imgHeight={0} onClick={() => setIsMenuVisible(!isMenuVisible)} />
-            <div className={"z-1 " + (isMenuVisible ? "" : "hidden")}>
-                <Link text="Accueil" url="/" className="" />
-                <Link text="À propos" url="/about" className="" />
-                <Link text="Messagerie" url="/messenging" className="" />
-                <Link text="Favoris" url="/favorites" className="" />
-                <Button text="Ajouter un logement" className="" />
+            <IconButton
+                icon={isMenuVisible ? IconButtonImages.Cross : IconButtonImages.Menu}
+                className="md:hidden mr-11 mb-6"
+                imgWidth={isMenuVisible ? 25 : 28}
+                imgHeight={isMenuVisible ? 25 : 20}
+                svgFill={isMenuVisible ? "#0D0D0D" : "#565656"}
+                onClick={() => setIsMenuVisible(!isMenuVisible)} />
+            <div
+                className={`flex flex-col gap-28 absolute top-85 left-0 right-0 bottom-0 pt-28 px-16 z-1 bg-(--white) items-start ` +
+                    (isMenuVisible ? "" : "hidden")}>
+                <Link text="Accueil" url="/" className="text-2xl hover:text-(--main-red) hover:font-bold" />
+                <hr className="w-full h-1 border-(--light-grey)" />
+                <Link text="À propos" url="/about" className="text-2xl hover:text-(--main-red) hover:font-bold" />
+                <hr className="w-full h-1 border-(--light-grey)" />
+                <Link text="Messagerie" url="/messenging" className="text-2xl hover:text-(--main-red) hover:font-bold" />
+                <hr className="w-full h-1 border-(--light-grey)" />
+                <Link text="Favoris" url="/favorites" className="text-2xl hover:text-(--main-red) hover:font-bold" />
+                <hr className="w-full h-1 border-(--light-grey)" />
+                <Button text="Ajouter un logement" className="flex items-center bg-(--main-red) rounded-[10] p-8 px-32 text-(--white)" />
             </div>
         </header >
     );

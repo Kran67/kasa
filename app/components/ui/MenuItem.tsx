@@ -18,6 +18,6 @@ export default function MenuItem({ text, isActive = false, url, className }: Men
     };
 
     return (
-        <button className={className} onClick={handleClick} role="button">{text}</button>
+        <button className={(isActive ? "text-(--main-red) font-bold " : "") + className} onClick={handleClick} role="button">{text}</button>
     );
 }
