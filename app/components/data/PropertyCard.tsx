@@ -15,7 +15,7 @@ export default function PropertyCard({ property, isFavorite }: PropsPC) {
     const router: AppRouterInstance = useRouter();
 
     const handleClick: () => void = () => {
-        router.push(`/property/${property.slug}`);
+        router.push(`/property/${property.id}`);
     };
 
     return (

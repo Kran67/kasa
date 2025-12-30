@@ -9,14 +9,19 @@ import Image from "next/image";
 import { useProperties } from "./hooks/useProperties";
 
 export default function HomePage() {
-  const { properties, refresh } = useProperties();
+  const { properties, refresh, loading, error } = useProperties();
+
+  if (loading) return <p>Chargement...</p>;
+  if (!properties || error) {
+    return;
+  }
 
   return (
     <main className="flex flex-col gap-51 md:gap-40 w-full items-center md:pt-40 md:px-140">
       <Header activeMenu={HeaderMenuItems.Home} />
       <div className="flex flex-col gap-51 md:gap-40 px-16 md:p-0">
         <div className="flex flex-col gap-8 w-full md:w-1115 items-center text-center">
-          <span className="text-[32px] text-(--main-red) w-342">Chez vous, partout et ailleurs</span>
+          <span className="text-[32px] text-(--main-red) w-342 md:w-full">Chez vous, partout et ailleurs</span>
           <span className="text-sm text-black font-normal">Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes.</span>
         </div>
         <div className="flex flex-col rounded-[20] bg-(--white) relative overflow-hidden h-458">

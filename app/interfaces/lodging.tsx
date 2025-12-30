@@ -1,6 +1,6 @@
 import { PropertyHost } from "./propertyHost";
 
-export interface Property {
+export interface Lodging {
     id: string;
     slug: string;
     title: string;
@@ -11,4 +11,7 @@ export interface Property {
     rating_avg: number;
     ratings_count: number;
     host: PropertyHost;
+    pictures: string[];
+    equipments: string[];
+    tags: string[];
 }

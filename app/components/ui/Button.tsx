@@ -23,7 +23,7 @@ export default function Button({ text, disabled, className, url, onClick, button
 
     return (
         <button
-            className={className}
+            className={"cursor-pointer " + className}
             disabled={disabled}
             type={buttonType}
             onClick={handleClick}

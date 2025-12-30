@@ -19,7 +19,8 @@ export enum IconButtonImages {
     Trash = "trash",
     Plus = "plus",
     Menu = "menu",
-    TopArrow = "top_arrow"
+    TopArrow = "top_arrow",
+    Star = "star"
 }
 
 export enum ButtonTypes {
