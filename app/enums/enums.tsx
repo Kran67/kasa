@@ -1,4 +1,5 @@
 export enum HeaderMenuItems {
+    None,
     Home,
     About,
     Messaging,

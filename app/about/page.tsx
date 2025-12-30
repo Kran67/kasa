@@ -24,7 +24,7 @@ export default function About() {
             <div className="flex gap-16 w-1115">
                 <div className="flex flex-col gap-16 justify-center">
                     <span className="text-lg font-bold text-(--main-red)">Notre mission est simple :</span>
-                    <ol className="list-decimal leading-[40px] text-sm">
+                    <ol className="list-decimal leading-[40px] text-sm ml-18">
                         <li className="">Offrir une plateforme fiable et simple d’utilisation</li>
                         <li className="">Proposer des hébergements variés et de qualité</li>
                         <li className="">Favoriser des échanges humains et chaleureux entre hôtes et voyageurs</li>
