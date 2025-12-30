@@ -105,7 +105,10 @@ export default function PropertyPage({ params }: { params: Promise<{ slug: strin
               <span className="text-sm text-black">Catégorie</span>
               <div className="grid gap-8 md:w-420 grid-cols-3" style={{ "gridTemplateRows": `repeat(${(lodging?.tags.length ?? 3) / 3}, 1fr)` }}>
                 {lodging?.tags.map((tag, index) => (
-                  <Tag key={index} text={tag} className="flex justify-center whitespace-nowrap text-xs text-(--dark-grey) font-normal bg-(--light-grey) rounded-[5] py-8" />
+                  <Tag
+                    key={index}
+                    text={tag}
+                    className="flex items-center justify-center md:whitespace-nowrap text-xs text-(--dark-grey) font-normal bg-(--light-grey) rounded-[5] py-8 px-8 text-center" />
                 ))}
               </div>
             </div>
