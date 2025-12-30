@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer className="flex w-full py-8 px-40 justify-between border-t-1 border-t-(--light-grey) border-t-solid items-center bg-(--white)">
             <Logo size={LogoSizes.Small} className="" />
-            <span className="text-(--dark-grey) text-xs">© 2020 Kasa. All rights reserved</span>
+            <span className="text-(--dark-grey) text-xs whitespace-nowrap">© 2020 Kasa. All rights reserved</span>
         </footer>
     );
 }
