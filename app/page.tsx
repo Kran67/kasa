@@ -1,11 +1,16 @@
+'use client'
+
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { HeaderMenuItems } from "./enums/enums";
 import PropertyCard from "./components/data/PropertyCard";
 import HomeImage from "@/app/assets/images/home.jpg";
 import Image from "next/image";
+import { useProperties } from "./hooks/useProperties";
 
 export default function HomePage() {
+  const { properties, refresh } = useProperties();
+
   return (
     <main className="flex flex-col gap-51 md:gap-40 w-full items-center md:pt-40 md:px-140">
       <Header activeMenu={HeaderMenuItems.Home} />
@@ -19,13 +24,9 @@ export default function HomePage() {
         </div>
       </div>
       <div className="flex flex-wrap gap-24 w-full md:w-1113 px-16 md:p-0">
-        <PropertyCard props="" />
-        <PropertyCard props="" />
-        <PropertyCard props="" />
-        <PropertyCard props="" />
-        <PropertyCard props="" />
-        <PropertyCard props="" />
-        <PropertyCard props="" />
+        {properties?.map((property, index) => (
+          <PropertyCard key={index} property={property} />
+        ))}
       </div>
       <div className="flex flex-col gap-40 w-full md:w-1114 py-40 px-8 md:p-40 rounded-[10] bg-(--white)">
         <div className="flex flex-col gap-16 items-center">
