@@ -19,3 +19,33 @@ body {
   font-family: var(--font-inter);
   font-weight: 500;
 }
+
+.checkbox-container {
+  display: flex;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  align-items: center;
+}
+
+.checkbox-container input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  height: 12px;
+  width: 12px;
+  border: 1px solid var(--dark-grey);
+  margin-right: 10px;
+}
+
+.checkbox-container:hover input~.checkmark,
+.checkbox-container input:checked~.checkmark {
+  background-color: var(--black);
+}

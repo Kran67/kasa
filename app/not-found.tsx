@@ -1,9 +1,8 @@
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
-import { HeaderMenuItems } from "@/app/enums/enums";
 import Button from "@/app/components/ui/Button";
 
-export default function NotFound() {
+export default function NotFoundPage() {
     return (
         <main className="flex flex-col gap-40 w-full items-center px-5 md:pt-40 md:px-140 h-screen justify-between">
             <Header />

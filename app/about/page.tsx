@@ -5,7 +5,7 @@ import Image from "next/image";
 import AboutImg1 from "@/app/assets/images/about_first.png";
 import AboutImg2 from "@/app/assets/images/about_last.png";
 
-export default function About() {
+export default function AboutPage() {
     return (
         <main className="flex flex-col gap-40 w-full items-center pt-40 px-140">
             <Header activeMenu={HeaderMenuItems.About} />
