@@ -4,14 +4,14 @@ import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { IconButtonImages } from "@/app/enums/enums";
 import IconButton from "../ui/IconButton";
-import Image from "next/image";
 import { Property } from "@/app/interfaces/property";
 
 interface PropsPC {
     property: Property;
+    isFavorite?: boolean;
 }
 
-export default function PropertyCard({ property }: PropsPC) {
+export default function PropertyCard({ property, isFavorite }: PropsPC) {
     const router: AppRouterInstance = useRouter();
 
     const handleClick: () => void = () => {
@@ -24,8 +24,11 @@ export default function PropertyCard({ property }: PropsPC) {
                 icon={IconButtonImages.Heart}
                 imgWidth={16}
                 imgHeight={16}
-                className="w-32 h-32 absolute right-16 top-16 bg-(--light-grey)"
-                svgFill="#565656" />
+                className={"w-32 h-32 absolute right-16 top-16 " + (isFavorite ? "bg-(--main-red)" : "bg-(--light-grey)") + " z-1 rounded-[5] flex items-center justify-center"}
+                svgFill={isFavorite ? "#FFF" : "#FFF"}
+                svgBgFill={isFavorite ? "#E0C2BA" : "#565656"}
+                svgStroke="#FFF"
+            />
             <div className="relative h-376 overflow-hidden rounded-t-[10]">
                 <img src={property.cover} alt="Image de la propriété" className="absolute -left-104 max-w-564 h-376" width={1240} height={827} />
             </div>
