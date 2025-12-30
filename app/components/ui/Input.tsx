@@ -1,12 +1,12 @@
 'use client'
 
-//import { InputTypes, InputImageTypes } from "@/app/enums/enums";
-import Image from "next/image";
+import { InputTypes/*, InputImageTypes*/ } from "@/app/enums/enums";
+//import Image from "next/image";
 
 interface InputProps {
     name: string;
     label?: string;
-    //type?: InputTypes;
+    type?: InputTypes;
     value?: string;
     //imageType?: InputImageTypes;
     placeHolder?: string;
@@ -19,7 +19,7 @@ interface InputProps {
     className?: string;
 }
 
-export default function Input({ name, label, /*type,*/ value,/* imageType,*/ placeHolder, required, width, onChange, hasError, autoComplete = "on", maxLength, className }: InputProps) {
+export default function Input({ name, label, type, value,/* imageType,*/ placeHolder, required, width, onChange, hasError, autoComplete = "on", maxLength, className }: InputProps) {
     const classNames: string = [
         "input",
         "flex",
@@ -38,16 +38,16 @@ export default function Input({ name, label, /*type,*/ value,/* imageType,*/ pla
     return (
         <div className={classNames} style={{ "minWidth": width, "maxWidth": width }}>
             {label
-                ? <label className="body-s text-black h-17" htmlFor={name}>{label}&nbsp;{required ? "*" : ""}</label>
+                ? <label className="text-sm text-(--black) font-medium" htmlFor={name}>{label}&nbsp;{required ? "*" : ""}</label>
                 : null
             }
             <div className={"flex justify-between items-center bg-(--white) border " +
-                (!hasError ? "border-(--grey-200)" : "border-(--error)") + " border-solid rounded-(--radius4) pr-17 pl-17 gap-10 h-53"}>
+                (!hasError ? "border-(--light-grey)" : "border-(--error)") + " border-solid rounded-[4px] py-16 px-10 gap-10 h-40"}>
                 <input
-                    className="body-s text-(--grey-600) w-full outline-0"
+                    className="text-sm text-(--black) w-full outline-0"
                     id={name}
                     name={name}
-                    //type={type}
+                    type={type}
                     defaultValue={value}
                     placeholder={placeHolder}
                     required={required}

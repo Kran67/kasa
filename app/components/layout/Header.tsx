@@ -9,7 +9,7 @@ import IconButton from "@/app/components/ui/IconButton";
 import Button from "@/app/components/ui/Button";
 
 interface HeaderProps {
-    activeMenu: HeaderMenuItems;
+    activeMenu?: HeaderMenuItems;
 }
 
 export default function Header({ activeMenu }: HeaderProps) {

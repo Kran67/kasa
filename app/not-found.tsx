@@ -6,7 +6,7 @@ import Button from "@/app/components/ui/Button";
 export default function NotFound() {
     return (
         <main className="flex flex-col gap-40 w-full items-center px-5 md:pt-40 md:px-140 h-screen justify-between">
-            <Header activeMenu={HeaderMenuItems.None} />
+            <Header />
             <div className="flex flex-col gap-40 w-full md:w-342">
                 <div className="flex flex-col items-center">
                     <span className="text-[100px] text-(--main-red) font-black">404</span>

@@ -1,5 +1,4 @@
 export enum HeaderMenuItems {
-    None,
     Home,
     About,
     Messaging,
@@ -26,4 +25,10 @@ export enum IconButtonImages {
 export enum ButtonTypes {
     Submit = "submit",
     Button = "button"
+}
+
+export enum InputTypes {
+    Text = 'text',
+    Password = 'password',
+    Date = 'date'
 }
