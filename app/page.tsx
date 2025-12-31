@@ -1,53 +1,18 @@
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { HeaderMenuItems } from "./enums/enums";
-import PropertyCard from "./components/data/PropertyCard";
 import HomeImage from "@/app/assets/images/home.jpg";
 import Image from "next/image";
-import { getProperties } from "@/app/api/api";
-import { Property } from "./interfaces/property";
-import { Metadata } from "next";
-
-export async function generateMetadata(): Promise<Metadata> {
-  // on va chercher les propriétés
-  let properties: Property[] | any = await getProperties();
-
-  const metaData = properties.map((property: Property) => {
-    return {
-      '@type': `http://kasa.com/Property/${property.id}`,
-      title: property.title,
-      description: property.description,
-      openGraph: {
-        '@type': property.cover,
-        images: [property.cover],
-      },
-    }
-  });
-  return metaData;
-}
+import Gallery from "./components/data/Gallery";
 
 /**
  * Affiche la page d'accueil
  * 
- * @async
  * @function HomePage
  */
-export default async function HomePage() {
-  // on va chercher les propriétés
-  let properties: Property[] | any = await getProperties();
-  // si aucune propriété n'a pas été trouvée, on donne un tableau vide
-  if (properties.error) {
-    properties = []
-  }
-
+export default function HomePage() {
   return (
     <main className="flex flex-col gap-51 md:gap-40 w-full items-center md:pt-40 md:px-140">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(await generateMetadata()).replace(/</g, '\\u003c'),
-        }}
-      />
       <Header activeMenu={HeaderMenuItems.Home} />
       <div className="flex flex-col gap-51 md:gap-40 px-16 md:p-0">
         <div className="flex flex-col gap-8 w-full md:w-1115 items-center text-center">
@@ -58,11 +23,7 @@ export default async function HomePage() {
           <Image src={HomeImage} alt="Image de la propriété" className="absolute -left-389 md:-left-2 -top-219 max-w-1117 h-894" />
         </div>
       </div>
-      <div className="flex flex-wrap gap-24 w-full md:w-1113 px-16 md:p-0">
-        {properties?.map((property: Property, index: number) => (
-          <PropertyCard key={index} property={property} />
-        ))}
-      </div>
+      <Gallery />
       <div className="flex flex-col gap-40 w-full md:w-1114 py-40 px-8 md:p-40 rounded-[10] bg-(--white)">
         <div className="flex flex-col gap-16 items-center">
           <span className="text-2xl text-(--black) font-semibold">Comment ça marche ?</span>
