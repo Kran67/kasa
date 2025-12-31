@@ -1,3 +1,4 @@
+// À cause de l'événement onClick
 'use client'
 
 import { useRouter } from "next/navigation";
@@ -6,14 +7,28 @@ import { IconButtonImages } from "@/app/enums/enums";
 import IconButton from "../ui/IconButton";
 import { Property } from "@/app/interfaces/property";
 
+/**
+ * Interface pour des paramétres pour l'affichage des détails d'une proriété
+ * 
+ * @interface PropsPC
+ */
 interface PropsPC {
     property: Property;
     isFavorite?: boolean;
 }
 
+/**
+ * Affiche la carte d'une propriété
+ * 
+ * @function PropertyCard
+ * @param {property, isFavorite} PropsPC
+ * @param {Property} PropsPC.property - Les données de la proriété
+ * @param {boolean?} PropsPC.isFavorite - Indique si la propriété est en favoris
+ */
 export default function PropertyCard({ property, isFavorite }: PropsPC) {
     const router: AppRouterInstance = useRouter();
 
+    // au clique sur les détails, redirection vers la page de la propriété
     const handleClick: () => void = () => {
         router.push(`/property/${property.id}`);
     };

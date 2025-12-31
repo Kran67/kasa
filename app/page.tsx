@@ -1,19 +1,24 @@
-'use client'
-
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { HeaderMenuItems } from "./enums/enums";
 import PropertyCard from "./components/data/PropertyCard";
 import HomeImage from "@/app/assets/images/home.jpg";
 import Image from "next/image";
-import { useProperties } from "./hooks/useProperties";
+import { getProperties } from "@/app/api/api";
+import { Property } from "./interfaces/property";
 
-export default function HomePage() {
-  const { properties, refresh, loading, error } = useProperties();
-
-  if (loading) return <p>Chargement...</p>;
-  if (!properties || error) {
-    return;
+/**
+ * Affiche la page d'accueil
+ * 
+ * @async
+ * @function HomePage
+ */
+export default async function HomePage() {
+  // on va chercher les propriétés
+  let properties: Property[] | any = await getProperties();
+  // si aucune propriété n'a pas été trouvée, on donne un tableau vide
+  if (properties.error) {
+    properties = []
   }
 
   return (
@@ -29,7 +34,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className="flex flex-wrap gap-24 w-full md:w-1113 px-16 md:p-0">
-        {properties?.map((property, index) => (
+        {properties?.map((property: Property, index: number) => (
           <PropertyCard key={index} property={property} />
         ))}
       </div>

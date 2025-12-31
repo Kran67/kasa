@@ -8,10 +8,22 @@ import Link from "@/app/components/ui/Link";
 import IconButton from "@/app/components/ui/IconButton";
 import Button from "@/app/components/ui/Button";
 
+/**
+ * Interface pour des paramétres pour l'affichage du menu actif
+ * 
+ * @interface PropsPC
+ */
 interface HeaderProps {
     activeMenu?: HeaderMenuItems;
 }
 
+/**
+ * Affiche l'entête de page
+ * 
+ * @function Header
+ * @param { activeMenu } HeaderProps
+ * @param { HeaderMenuItems? } HeaderProps.activeMenu - Le menu actif
+ */
 export default function Header({ activeMenu }: HeaderProps) {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
 
@@ -28,7 +40,7 @@ export default function Header({ activeMenu }: HeaderProps) {
                 text="À propos"
                 isActive={activeMenu === HeaderMenuItems.About}
                 url="/about"
-                className="hidden md:flex text-sm cursor-pointer hover:text-(--main-red) hover:font-bold" />
+                className="hidden md:flex text-sm cursor-pointer hover:text-(--main-red) hover:font-bold w-62" />
             <Logo size={LogoSizes.Large} className="hidden md:flex" />
             <div className="flex gap-28 hidden md:flex">
                 <Link text="+Ajouter un logement" className="hidden md:flex text-sm text-(--main-red)" />

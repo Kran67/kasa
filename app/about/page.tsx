@@ -5,6 +5,11 @@ import Image from "next/image";
 import AboutImg1 from "@/app/assets/images/about_first.png";
 import AboutImg2 from "@/app/assets/images/about_last.png";
 
+/**
+ * Affiche la page À propos
+ * 
+ * @function AboutPage
+ */
 export default function AboutPage() {
     return (
         <main className="flex flex-col gap-40 w-full items-center md:pt-40 md:px-140">

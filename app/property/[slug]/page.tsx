@@ -1,26 +1,31 @@
-'use client'
-
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
-import { useLodging } from "@/app/hooks/useLodging";
-import { use } from "react";
+import { getLodging } from "@/app/api/api";
 import IconButton from "@/app/components/ui/IconButton";
 import { IconButtonImages } from "@/app/enums/enums";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Button from "@/app/components/ui/Button";
 import Tag from "@/app/components/ui/Tag";
 import Pix from "@/app/assets/images/pix.png";
+import { Lodging } from "@/app/interfaces/lodging";
+import { redirect, RedirectType } from 'next/navigation'
 
-export default function PropertyPage({ params }: { params: Promise<{ slug: string }> }) {
-  const router: AppRouterInstance = useRouter();
-  const { slug } = use(params);
-  const { lodging, refresh, loading, error } = useLodging(slug);
+/**
+ * Affiche les détails d'une propriété
+ * 
+ * @async
+ * @function PropertyPage
+ * @param { params: Promise<{ slug: string }> } params - Identifiant de la propriété sous forme de Promise
+ */
+export default async function PropertyPage({ params }: { params: Promise<{ slug: string }> }) {
+  // on récupère le paramétre slug (identifiant de la propriété)
+  const slug = (await params).slug;
+  // on va chercher la propriété
+  const lodging: Lodging | any = await getLodging(slug);
 
-  if (loading) return <p>Chargement...</p>;
-  if (!lodging || error || !lodging.id) {
-    router.push("/404");
+  // si le propriété n'a pas été trouvée, on redirige vers la page 404
+  if (lodging.error) {
+    redirect("/404", RedirectType.push);
   }
 
   return (
@@ -93,7 +98,7 @@ export default function PropertyPage({ params }: { params: Promise<{ slug: strin
             <div className="flex flex-col gap-16">
               <span className="text-sm text-black">Équipements</span>
               <div className="grid gap-8 md:w-420 grid-cols-3" style={{ "gridTemplateRows": `repeat(${(lodging?.tags.length ?? 3) / 3}, 1fr)` }}>
-                {lodging?.equipments.map((equipment, index) => (
+                {lodging?.equipments.map((equipment: string, index: number) => (
                   <Tag
                     key={index}
                     text={equipment}
@@ -104,7 +109,7 @@ export default function PropertyPage({ params }: { params: Promise<{ slug: strin
             <div className="flex flex-col gap-15">
               <span className="text-sm text-black">Catégorie</span>
               <div className="grid gap-8 md:w-420 grid-cols-3" style={{ "gridTemplateRows": `repeat(${(lodging?.tags.length ?? 3) / 3}, 1fr)` }}>
-                {lodging?.tags.map((tag, index) => (
+                {lodging?.tags.map((tag: string, index: number) => (
                   <Tag
                     key={index}
                     text={tag}
