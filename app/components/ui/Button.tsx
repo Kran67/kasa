@@ -15,7 +15,7 @@ interface ButtonProps {
     disabled?: boolean;
     className?: string;
     url?: string
-    onClick?: (e: any) => void;
+    clickFunc?: string;
     buttonType?: ButtonTypes;
 }
 
@@ -28,14 +28,14 @@ interface ButtonProps {
  * @param {boolean?} ButtonProps.disabled - Statut du bouton actif ou non actif
  * @param {string?} ButtonProps.className - Classes css du bouton
  * @param {string?} ButtonProps.url - Url de redirection lors du clique sur le bouton
- * @param {void?} ButtonProps.onClick - Function à executer sur le clique du bouton avant redirection si elle est passée
+ * @param {string?} ButtonProps.clickFunc - Function à executer sur le clique du bouton avant redirection si elle est passée
  * @param {ButtonTypes?} ButtonProps.buttonType - Type de bouton (Button / Submit)
  */
-export default function Button({ text, disabled, className, url, onClick, buttonType = ButtonTypes.Submit }: ButtonProps) {
+export default function Button({ text, disabled, className, url, clickFunc, buttonType = ButtonTypes.Submit }: ButtonProps) {
     const router: AppRouterInstance = useRouter();
 
     const handleClick = (e: any) => {
-        onClick?.(e);
+        new Function(clickFunc ?? "")();
         if (url) router.push(url);
     };
 

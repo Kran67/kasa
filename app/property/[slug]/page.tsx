@@ -79,7 +79,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                 text={lodging?.rating_avg.toFixed()}
                 className="gap-4 rounded-[10] p-8 bg-(--light-grey) text-base text-black font-normal cursor-default!" />
             </div>
-            <Button url="/messenging" text="Contacter l’hôte" className="text-sm text-(--white) bg-(--main-red) rounded-[10] py-8 px-32" />
+            <Button clickFunc="alert('Lancer un appel téléphonique')" text="Contacter l’hôte" className="text-sm text-(--white) bg-(--main-red) rounded-[10] py-8 px-32" />
             <Button url="/messenging" text="Envoyer un message" className="text-sm text-(--white) bg-(--main-red) rounded-[10] py-8 px-32" />
           </div>
           <div className="flex flex-col gap-40 md:w-616 bg-(--white) rounded-[10] border boder-solid border-(--light-grey) p-24 order-0 md:order-1">

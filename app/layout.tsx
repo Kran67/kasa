@@ -12,6 +12,11 @@ const inter: NextFontWithVariable = Inter({
 export const metadata: Metadata = {
   title: "Kasa",
   description: "Une entreprise de location d’appartements et de maisons entre particuliers.",
+  generator: 'Next.js',
+  applicationName: 'Kasa',
+  referrer: 'origin-when-cross-origin',
+  keywords: ['Next.js', 'React', 'JavaScript'],
+  creator: "Miguel LOPES",
 };
 
 export default function RootLayout({
@@ -22,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className={`${inter.variable} antialiased items-center flex`}>
         {children}
