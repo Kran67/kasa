@@ -96,6 +96,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
               <span className="text-sm text-black font-normal">{lodging?.description}</span>
             </div>
             <div className="flex flex-col gap-16">
+              {/* <CollapseItem title="Équipements" data={lodging?.equipments} /> */}
               <span className="text-sm text-black">Équipements</span>
               <div className="grid gap-8 md:w-420 grid-cols-3" style={{ "gridTemplateRows": `repeat(${(lodging?.tags.length ?? 3) / 3}, 1fr)` }}>
                 {lodging?.equipments.map((equipment: string, index: number) => (
@@ -107,6 +108,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
               </div>
             </div>
             <div className="flex flex-col gap-15">
+              {/* <CollapseItem title="Catégorie" data={lodging?.tags} /> */}
               <span className="text-sm text-black">Catégorie</span>
               <div className="grid gap-8 md:w-420 grid-cols-3" style={{ "gridTemplateRows": `repeat(${(lodging?.tags.length ?? 3) / 3}, 1fr)` }}>
                 {lodging?.tags.map((tag: string, index: number) => (

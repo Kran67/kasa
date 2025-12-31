@@ -6,6 +6,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import { IconButtonImages } from "@/app/enums/enums";
 import IconButton from "../ui/IconButton";
 import { Property } from "@/app/interfaces/property";
+import { useFavorites } from "@/app/hooks/useFavorites";
 
 /**
  * Interface pour des paramétres pour l'affichage des détails d'une proriété
@@ -14,24 +15,25 @@ import { Property } from "@/app/interfaces/property";
  */
 interface PropsPC {
     property: Property;
-    isFavorite?: boolean;
 }
 
 /**
  * Affiche la carte d'une propriété
  * 
  * @function PropertyCard
- * @param {property, isFavorite} PropsPC
+ * @param {property} PropsPC
  * @param {Property} PropsPC.property - Les données de la proriété
- * @param {boolean?} PropsPC.isFavorite - Indique si la propriété est en favoris
  */
-export default function PropertyCard({ property, isFavorite }: PropsPC) {
+export default function PropertyCard({ property }: PropsPC) {
     const router: AppRouterInstance = useRouter();
+    const { toggleFavorite, isFavorite } = useFavorites();
 
     // au clique sur les détails, redirection vers la page de la propriété
     const handleClick: () => void = () => {
         router.push(`/property/${property.id}`);
     };
+
+    const favorite = isFavorite(property.id);
 
     return (
         <div className="flex flex-col rounded-[10px] bg-(--white) w-355 relative">
@@ -39,10 +41,12 @@ export default function PropertyCard({ property, isFavorite }: PropsPC) {
                 icon={IconButtonImages.Heart}
                 imgWidth={16}
                 imgHeight={16}
-                className={"w-32 h-32 absolute right-16 top-16 " + (isFavorite ? "bg-(--main-red)" : "bg-(--light-grey)") + " z-1 rounded-[5] flex items-center justify-center"}
-                svgFill={isFavorite ? "#FFF" : "#FFF"}
-                svgBgFill={isFavorite ? "#E0C2BA" : "#565656"}
+                className={"w-32 h-32 absolute right-16 top-16 " + (favorite ? "bg-(--main-red)" : "bg-(--light-grey)") + " z-1 rounded-[5] flex items-center justify-center"}
+                svgFill={favorite ? "#FFF" : "#FFF"}
+                svgBgFill={favorite ? "#E0C2BA" : "#565656"}
                 svgStroke="#FFF"
+                onClick={() => toggleFavorite(property)}
+                title={favorite ? "Enlever des favoris" : "Ajouter aux favoris"}
             />
             <div className="relative h-376 overflow-hidden rounded-t-[10]">
                 <img src={property.cover} alt="Image de la propriété" className="absolute -left-104 max-w-564 h-376" width={1240} height={827} />

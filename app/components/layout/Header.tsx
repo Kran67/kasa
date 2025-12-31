@@ -51,7 +51,9 @@ export default function Header({ activeMenu }: HeaderProps) {
                         className="cursor-pointer fill-current"
                         imgWidth={10}
                         imgHeight={9}
-                        svgStroke="#99331A" />
+                        svgStroke="#99331A"
+                        svgBgFill={activeMenu === HeaderMenuItems.Favorites ? "#99331A" : "transparent"}
+                        title="Voir mes favoris" />
                     <div className="w-0 h-5 border-l-1 border-solid border-(--main-red)"></div>
                     <IconButton
                         icon={IconButtonImages.Message}
@@ -59,7 +61,9 @@ export default function Header({ activeMenu }: HeaderProps) {
                         className="cursor-pointer"
                         imgWidth={10}
                         imgHeight={8}
-                        svgStroke="#99331A" />
+                        svgStroke="#99331A"
+                        svgBgFill={activeMenu === HeaderMenuItems.Messaging ? "#99331A" : "transparent"}
+                        title="Voir mes messages" />
                 </div>
             </div>
             <IconButton

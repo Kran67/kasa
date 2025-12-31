@@ -15,9 +15,10 @@ interface IconButtonProps {
     svgFill?: string;
     svgBgFill?: string;
     svgStroke?: string;
+    title?: string;
 }
 
-export default function IconButton({ icon, className, onClick, url, imgWidth, imgHeight, text, svgFill, svgBgFill, svgStroke }: IconButtonProps) {
+export default function IconButton({ icon, className, onClick, url, imgWidth, imgHeight, text, svgFill, svgBgFill, svgStroke, title }: IconButtonProps) {
     const router: AppRouterInstance = useRouter();
 
     const handleClick: () => void = () => {
@@ -81,7 +82,8 @@ export default function IconButton({ icon, className, onClick, url, imgWidth, im
         <button
             className={"flex items-center cursor-pointer whitespace-nowrap " + className}
             onClick={handleClick}
-            role="button">
+            role="button"
+            title={title}>
             {renderSwitch()}{text}
         </button>
     );

@@ -1,14 +1,12 @@
 'use client'
 
-import { InputTypes/*, InputImageTypes*/ } from "@/app/enums/enums";
-//import Image from "next/image";
+import { InputTypes } from "@/app/enums/enums";
 
 interface InputProps {
     name: string;
     label?: string;
     type?: InputTypes;
     value?: string;
-    //imageType?: InputImageTypes;
     placeHolder?: string;
     required?: boolean;
     width?: number;
@@ -30,10 +28,6 @@ export default function Input({ name, label, type, value,/* imageType,*/ placeHo
         label ? "h-77" : "h-63",
         className ?? ""
     ].join(" ");
-
-    //const imgHeight: 14 | 16 = imageType === InputImageTypes.Search
-    //    ? 14
-    //    : 16;
 
     return (
         <div className={classNames} style={{ "minWidth": width, "maxWidth": width }}>

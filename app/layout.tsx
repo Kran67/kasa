@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
+import { FavoritesProvider } from "@/app/contexts/FavoritesProvider";
 
 const inter: NextFontWithVariable = Inter({
   variable: "--font-inter",
@@ -29,7 +30,9 @@ export default function RootLayout({
       <head>
       </head>
       <body className={`${inter.variable} antialiased items-center flex`}>
-        {children}
+        <FavoritesProvider>
+          {children}
+        </FavoritesProvider>
         {/* <UserProvider initialUser={user}>
           <CookiesProvider>{children}</CookiesProvider>
         </UserProvider> */}
