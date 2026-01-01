@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import arrowBottom from '@/app/assets/images/bottom_arrow.svg';
-import Tag from './Tag';
+import Tag from '@/app/components/ui/Tag';
 import Image from 'next/image';
 
 /**

@@ -1,9 +1,15 @@
-import Footer from "../components/layout/Footer";
-import Header from "../components/layout/Header";
-import { HeaderMenuItems } from "../enums/enums";
+import Footer from "@/app/components/layout/Footer";
+import Header from "@/app/components/layout/Header";
+import { HeaderMenuItems } from "@/app/enums/enums";
 import Image from "next/image";
 import AboutImg1 from "@/app/assets/images/about_first.png";
 import AboutImg2 from "@/app/assets/images/about_last.png";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Kasa - À propos",
+    description: "À propos du site kasa"
+};
 
 /**
  * Affiche la page À propos

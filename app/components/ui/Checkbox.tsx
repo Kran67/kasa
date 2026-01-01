@@ -1,6 +1,6 @@
 'use client'
 
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 
 interface CheckboxProps {
     id: string;

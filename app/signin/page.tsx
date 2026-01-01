@@ -1,14 +1,15 @@
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { InputTypes } from "@/app/enums/enums";
-import Input from "../components/ui/Input";
-import Button from "../components/ui/Button";
-import Link from "../components/ui/Link";
-import Checkbox from "../components/ui/Checkbox";
+import Input from "@/app/components/ui/Input";
+import Button from "@/app/components/ui/Button";
+import Link from "@/app/components/ui/Link";
+import Checkbox from "@/app/components/ui/Checkbox";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Kasa - S'enregister",
+  description: "Devenir utlisateur enregistré"
 };
 
 export default function SigninPage() {

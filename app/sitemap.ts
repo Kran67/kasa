@@ -1,5 +1,5 @@
-import { getProperties } from './api/api';
-import { Lodging } from './interfaces/lodging';
+import { getProperties } from '@/app/api/api';
+import { Lodging } from '@/app/interfaces/lodging';
 
 export default async function sitemap(): Promise<{
     url: string;

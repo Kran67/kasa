@@ -1,7 +1,7 @@
 'use client'
 
 import { Property } from "@/app/interfaces/property";
-import PropertyCard from "./PropertyCard";
+import PropertyCard from "@/app/components/data/PropertyCard";
 import { useFavorites } from "@/app/hooks/useFavorites";
 import { useProperties } from "@/app/hooks/useProperties";
 

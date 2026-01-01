@@ -1,4 +1,4 @@
-import { PropertyHost } from "./propertyHost";
+import { PropertyHost } from "@/app/interfaces/propertyHost";
 
 export interface Lodging {
     id: string;

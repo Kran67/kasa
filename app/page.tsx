@@ -1,9 +1,15 @@
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
-import { HeaderMenuItems } from "./enums/enums";
+import { HeaderMenuItems } from "@/app/enums/enums";
 import HomeImage from "@/app/assets/images/home.jpg";
 import Image from "next/image";
-import Gallery from "./components/data/Gallery";
+import Gallery from "@/app/components/data/Gallery";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kasa - Accueil",
+  description: "Affichage de la page d'accueil avec la listes des propriétés"
+};
 
 /**
  * Affiche la page d'accueil

@@ -4,7 +4,7 @@
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { IconButtonImages } from "@/app/enums/enums";
-import IconButton from "../ui/IconButton";
+import IconButton from "@/app/components/ui/IconButton";
 import { Property } from "@/app/interfaces/property";
 import { useFavorites } from "@/app/hooks/useFavorites";
 

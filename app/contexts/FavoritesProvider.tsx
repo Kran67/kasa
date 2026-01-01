@@ -1,8 +1,7 @@
-// context/FavoritesProvider.tsx
 "use client"
 
 import { ReactNode, useEffect, useState } from "react"
-import { FavoritesContext } from "./FavoritesContext"
+import { FavoritesContext } from "@/app/contexts/FavoritesContext"
 import { Property } from "@/app/interfaces/property"
 
 const STORAGE_KEY = "favorite_properties"

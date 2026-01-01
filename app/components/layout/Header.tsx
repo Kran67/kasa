@@ -63,6 +63,7 @@ export default function Header({ activeMenu }: HeaderProps) {
                         imgHeight={8}
                         svgStroke="#99331A"
                         svgBgFill={activeMenu === HeaderMenuItems.Messaging ? "#99331A" : "transparent"}
+                        svgFill={activeMenu === HeaderMenuItems.Messaging ? "#99331A" : "transparent"}
                         title="Voir mes messages" />
                 </div>
             </div>

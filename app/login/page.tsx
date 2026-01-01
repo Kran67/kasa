@@ -1,13 +1,14 @@
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { InputTypes } from "@/app/enums/enums";
-import Input from "../components/ui/Input";
-import Button from "../components/ui/Button";
-import Link from "../components/ui/Link";
+import Input from "@/app/components/ui/Input";
+import Button from "@/app/components/ui/Button";
+import Link from "@/app/components/ui/Link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Kasa - Se connecter",
+  description: "Se connecter au site kasa"
 };
 
 export default function LoginPage() {

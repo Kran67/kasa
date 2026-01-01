@@ -50,3 +50,7 @@ body {
 .checkbox-container input:checked~.checkmark {
   background-color: var(--black);
 }
+
+.input>div {
+  border: none !important;
+}
