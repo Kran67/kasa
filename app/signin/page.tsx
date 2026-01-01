@@ -5,6 +5,11 @@ import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import Link from "../components/ui/Link";
 import Checkbox from "../components/ui/Checkbox";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kasa - S'enregister",
+};
 
 export default function SigninPage() {
   return (

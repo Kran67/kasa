@@ -1,9 +1,12 @@
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { HeaderMenuItems } from "@/app/enums/enums";
-import HomeImage from "@/app/assets/images/home.jpg";
-import Image from "next/image";
 import Gallery from "@/app/components/data/Gallery";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kasa - Page des favoris",
+};
 
 /**
  * Affiche la page des favoris

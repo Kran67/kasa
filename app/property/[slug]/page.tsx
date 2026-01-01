@@ -5,10 +5,31 @@ import IconButton from "@/app/components/ui/IconButton";
 import { IconButtonImages } from "@/app/enums/enums";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
-import Tag from "@/app/components/ui/Tag";
 import Pix from "@/app/assets/images/pix.png";
 import { Lodging } from "@/app/interfaces/lodging";
 import { redirect, RedirectType } from 'next/navigation'
+import CollapseElement from "@/app/components/ui/CollapseElement";
+import { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export async function generateMetadata({ params, searchParams }: Props,
+  parent: ResolvingMetadata): Promise<Metadata> {
+  const { slug } = await params;
+  // on va chercher les information de la propriété
+  const lodging: Lodging | any = await getLodging(slug);
+  return {
+    title: `kasa - ${lodging.title}`,
+    description: lodging.description,
+    openGraph: {
+      type: 'article',
+      images: [lodging.cover],
+    },
+  }
+}
 
 /**
  * Affiche les détails d'une propriété
@@ -17,7 +38,7 @@ import { redirect, RedirectType } from 'next/navigation'
  * @function PropertyPage
  * @param { params: Promise<{ slug: string }> } params - Identifiant de la propriété sous forme de Promise
  */
-export default async function PropertyPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function PropertyPage({ params, searchParams }: Props) {
   // on récupère le paramétre slug (identifiant de la propriété)
   const slug = (await params).slug;
   // on va chercher la propriété
@@ -95,30 +116,8 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
               </div>
               <span className="text-sm text-black font-normal">{lodging?.description}</span>
             </div>
-            <div className="flex flex-col gap-16">
-              {/* <CollapseItem title="Équipements" data={lodging?.equipments} /> */}
-              <span className="text-sm text-black">Équipements</span>
-              <div className="grid gap-8 md:w-420 grid-cols-3" style={{ "gridTemplateRows": `repeat(${(lodging?.tags.length ?? 3) / 3}, 1fr)` }}>
-                {lodging?.equipments.map((equipment: string, index: number) => (
-                  <Tag
-                    key={index}
-                    text={equipment}
-                    className="flex items-center justify-center md:whitespace-nowrap text-xs text-(--dark-grey) font-normal bg-(--light-grey) rounded-[5] py-8 px-8 text-center" />
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col gap-15">
-              {/* <CollapseItem title="Catégorie" data={lodging?.tags} /> */}
-              <span className="text-sm text-black">Catégorie</span>
-              <div className="grid gap-8 md:w-420 grid-cols-3" style={{ "gridTemplateRows": `repeat(${(lodging?.tags.length ?? 3) / 3}, 1fr)` }}>
-                {lodging?.tags.map((tag: string, index: number) => (
-                  <Tag
-                    key={index}
-                    text={tag}
-                    className="flex items-center justify-center md:whitespace-nowrap text-xs text-(--dark-grey) font-normal bg-(--light-grey) rounded-[5] py-8 px-8 text-center" />
-                ))}
-              </div>
-            </div>
+            <CollapseElement title="Équipements" content={lodging?.equipments} />
+            <CollapseElement title="Catégorie" content={lodging?.tags} />
           </div>
         </div>
       </div>

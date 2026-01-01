@@ -17,7 +17,6 @@ export default function Checkbox({ id, text, disabled, className, checked = fals
 
     const handleClick = (e: any) => {
         const checkbox = (e.target as HTMLElement).querySelector("input") as HTMLInputElement;
-        console.log(checkbox.checked);
         setIsChecked(!checkbox.checked);
     }
 

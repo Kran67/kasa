@@ -4,10 +4,16 @@ import { InputTypes } from "@/app/enums/enums";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import Link from "../components/ui/Link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kasa - Se connecter",
+};
 
 export default function LoginPage() {
   return (
     <main className="flex flex-col gap-40 w-full items-center px-16 md:pt-40 md:px-140 h-screen justify-between">
+      <meta title="" />
       <Header />
       <form className="flex flex-col gap-38 py-32 px-16 md:p-80 bg-(--white) border border-solid border-(--light-grey) rounded-[10px] items-center md:w-742">
         <div className="flex flex-col gap-8 items-center">
