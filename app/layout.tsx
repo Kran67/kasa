@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { FavoritesProvider } from "@/app/contexts/FavoritesProvider";
+import { CookiesProvider } from 'next-client-cookies/server';
 
 /**
  * Ajout de la police de caractère utilisée sur le site
@@ -48,7 +49,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased items-center flex`}>
         <FavoritesProvider>
-          {children}
+          <CookiesProvider>{children}</CookiesProvider>
         </FavoritesProvider>
         {/* <UserProvider initialUser={user}>
           <CookiesProvider>{children}</CookiesProvider>
