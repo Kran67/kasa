@@ -1,5 +1,7 @@
 /**
  * Prépare le corps du document html pour l'affichage de fenêtre modale, enlève la scrollbar
+ * 
+ * @function
  * @param overflow: string - le type de débordement
  * @returns 
  */

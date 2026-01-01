@@ -35,7 +35,7 @@ export default function Button({ text, disabled, className, url, clickFunc, butt
     const router: AppRouterInstance = useRouter();
 
     const handleClick = (e: any) => {
-        new Function(clickFunc ?? "")();
+        new Function(clickFunc ?? "")(e);
         if (url) router.push(url);
     };
 

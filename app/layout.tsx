@@ -4,12 +4,24 @@ import "@/app/globals.css";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { FavoritesProvider } from "@/app/contexts/FavoritesProvider";
 
+/**
+ * Ajout de la police de caractère utilisée sur le site
+ * 
+ * @function Inter
+ * @returns { NextFontWithVariable } - Les informations de la police
+ */
 const inter: NextFontWithVariable = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
+/**
+ * Ajout les métadata à la page
+ * 
+ * @function metadata
+ * @returns { Metadata } - Les méta data à ajouter
+ */
 export const metadata: Metadata = {
   title: "Kasa",
   description: "Une entreprise de location d’appartements et de maisons entre particuliers.",
@@ -20,6 +32,11 @@ export const metadata: Metadata = {
   creator: "Miguel LOPES",
 };
 
+/**
+ * Affiche la mise en page globale du site
+ * 
+ * @function RootLayout
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

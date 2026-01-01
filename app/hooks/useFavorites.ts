@@ -1,12 +1,18 @@
 import { useContext } from "react";
-import { FavoritesContext } from "@/app/contexts/FavoritesContext";
+import { FavoritesContext, FavoritesContextType } from "@/app/contexts/FavoritesContext";
 
+/**
+ * Permet de récupèrer les favoris depuis le context
+ * 
+ * @function useFavorites
+ * @returns FavoritesContextType | null
+ */
 export function useFavorites() {
-    const context = useContext(FavoritesContext)
+    const context: FavoritesContextType | null = useContext(FavoritesContext);
 
     if (!context) {
-        throw new Error("useFavorites must be used within a FavoritesProvider")
+        throw new Error("useFavorites must be used within a FavoritesProvider");
     }
 
-    return context
+    return context;
 }

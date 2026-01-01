@@ -3,10 +3,21 @@ import Footer from "@/app/components/layout/Footer";
 import Button from "@/app/components/ui/Button";
 import type { Metadata } from "next";
 
+/**
+ * Ajout les métadata à la page
+ * 
+ * @function metadata
+ * @returns { Metadata } - Les méta data à ajouter
+ */
 export const metadata: Metadata = {
     title: "Kasa - Page non trouvée",
 };
 
+/**
+ * Affiche la page 404
+ * 
+ * @function NotFoundPage
+ */
 export default function NotFoundPage() {
     return (
         <main className="flex flex-col gap-40 w-full items-center px-5 md:pt-40 md:px-140 h-screen justify-between">

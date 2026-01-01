@@ -6,6 +6,12 @@ import AboutImg1 from "@/app/assets/images/about_first.png";
 import AboutImg2 from "@/app/assets/images/about_last.png";
 import { Metadata } from "next";
 
+/**
+ * Ajout les métadata à la page
+ * 
+ * @function metadata
+ * @returns { Metadata } - Les méta data à ajouter
+ */
 export const metadata: Metadata = {
     title: "Kasa - À propos",
     description: "À propos du site kasa"

@@ -4,6 +4,11 @@ import { useRouter } from "next/navigation";
 import { IconButtonImages } from "@/app/enums/enums";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
+/**
+ * Interface pour les propriétés d'initialisation du IconButton
+ * 
+ * @interface IconButtonProps
+ */
 interface IconButtonProps {
     icon: IconButtonImages;
     className?: string;
@@ -18,6 +23,23 @@ interface IconButtonProps {
     title?: string;
 }
 
+/**
+ * Affiche d'un bouton avec une icône
+ * 
+ * @function IconButton
+ * @param { icon, className, onClick, url, imgWidth, imgHeight, text, svgFill, svgBgFill, svgStroke, title } IconButtonProps - Les proriétés du IconButton
+ * @param {IconButtonImages} IconButtonProps.icon - Type d'icône à afficher
+ * @param {string?} IconButtonProps.className - Classes css du bouton
+ * @param {function?} IconButtonProps.onClick - Function à executer sur le clique du bouton avant redirection si elle est passée
+ * @param {string?} IconButtonProps.url - Url de redirection lors du clique sur le bouton
+ * @param {number} IconButtonProps.imgWidth - Largeur de l'icône
+ * @param {number} IconButtonProps.imgHeight - Hauteur de l'icône
+ * @param {string?} IconButtonProps.text - Texte à afficher
+ * @param {string?} IconButtonProps.svgFill - Couleur à appliquer comme fond de l'icône
+ * @param {string?} IconButtonProps.svgBgFill - Couleur à appliquer comme fond de l'icône
+ * @param {string?} IconButtonProps.svgStroke - Couleur à appliquer comme trait de l'icône
+ * @param {string?} IconButtonProps.title - Texte à afficher comme bulle d'information
+ */
 export default function IconButton({ icon, className, onClick, url, imgWidth, imgHeight, text, svgFill, svgBgFill, svgStroke, title }: IconButtonProps) {
     const router: AppRouterInstance = useRouter();
 
@@ -26,6 +48,7 @@ export default function IconButton({ icon, className, onClick, url, imgWidth, im
         if (url) router.push(url);
     };
 
+    // Retourne une image svg en focntion du type d'icône choisit
     const renderSwitch = () => {
         switch (icon) {
             case IconButtonImages.Heart:

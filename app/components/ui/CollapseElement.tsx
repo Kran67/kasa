@@ -15,11 +15,20 @@ interface CollapseElementProps {
     content?: string[];
 }
 
+/**
+ * Affiche d'un case à cocher
+ * 
+ * @function CollapseElement
+ * @param { title, content } CollapseElementProps - Les proriétés de l'élément retractable
+ * @param {string} CollapseElementProps.title - Titre de l'élément retractable
+ * @param {string[]?} CollapseElementProps.content - Liste des éléments à cacher
+ */
 export default function CollapseElement({ title, content }: CollapseElementProps) {
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef(null);
     const [contentHeight, setContentHeight] = useState(0);
 
+    // permet la gestion de l'affichage ou non des éléments
     useEffect(() => {
         if (isOpen && ref.current) {
             setContentHeight((ref.current as HTMLElement).clientHeight);
@@ -27,7 +36,6 @@ export default function CollapseElement({ title, content }: CollapseElementProps
             setContentHeight(0);
         }
     }, [isOpen, content]);
-
 
     return (
         <div className="flex flex-col gap-15">

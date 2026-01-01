@@ -33,6 +33,7 @@ export default function PropertyCard({ property }: PropsPC) {
         router.push(`/property/${property.id}`);
     };
 
+    // détermine si la propriété fait partie des favoris
     const favorite = isFavorite(property.id);
 
     return (

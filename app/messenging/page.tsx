@@ -5,6 +5,12 @@ import IconButton from "@/app/components/ui/IconButton";
 import Input from "@/app/components/ui/Input";
 import { Metadata } from "next";
 
+/**
+ * Ajout les métadata à la page
+ * 
+ * @function metadata
+ * @returns { Metadata } - Les méta data à ajouter
+ */
 export const metadata: Metadata = {
   title: "Kasa - Messagerie",
   description: "Affichage des messages que vous avez reçu"

@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 
+/**
+ * Interface pour les propriétés d'initialisation de la Checkbox
+ * 
+ * @interface CheckboxProps
+ */
 interface CheckboxProps {
     id: string;
     text?: string;
@@ -12,6 +17,18 @@ interface CheckboxProps {
     required?: boolean;
 }
 
+/**
+ * Affiche d'un case à cocher
+ * 
+ * @function Checkbox
+ * @param { id, text, disabled, className, checked = false, required = false } CheckboxProps - Les proriétés de la Checkbox
+ * @param {string} CheckboxProps.id - Identifiant de la checkbox
+ * @param {string?} CheckboxProps.text - Texte à afficher
+ * @param {boolean?} CheckboxProps.disabled - Statut du bouton actif ou non actif
+ * @param {string?} CheckboxProps.className - Classes css du bouton
+ * @param {checked?} CheckboxProps.checked - Détermine si la checkbox doit être cochée ou non
+ * @param {required?} CheckboxProps.required - Indique si la checkbox est obligatoire ou non
+ */
 export default function Checkbox({ id, text, disabled, className, checked = false, required = false }: CheckboxProps) {
     const [isChecked, setIsChecked] = useState(checked);
 

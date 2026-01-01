@@ -6,6 +6,12 @@ import Image from "next/image";
 import Gallery from "@/app/components/data/Gallery";
 import { Metadata } from "next";
 
+/**
+ * Ajout les métadata à la page
+ * 
+ * @function metadata
+ * @returns { Metadata } - Les méta data à ajouter
+ */
 export const metadata: Metadata = {
   title: "Kasa - Accueil",
   description: "Affichage de la page d'accueil avec la listes des propriétés"

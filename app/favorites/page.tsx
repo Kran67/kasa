@@ -4,6 +4,12 @@ import { HeaderMenuItems } from "@/app/enums/enums";
 import Gallery from "@/app/components/data/Gallery";
 import type { Metadata } from "next";
 
+/**
+ * Ajout les métadata à la page
+ * 
+ * @function metadata
+ * @returns { Metadata } - Les méta data à ajouter
+ */
 export const metadata: Metadata = {
   title: "Kasa - Page des favoris",
 };

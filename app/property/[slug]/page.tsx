@@ -2,16 +2,13 @@
 
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
-import { getLodging } from "@/app/api/api";
 import IconButton from "@/app/components/ui/IconButton";
 import { IconButtonImages } from "@/app/enums/enums";
 import Image from "next/image";
 import Button from "@/app/components/ui/Button";
 import Pix from "@/app/assets/images/pix.png";
-import { Lodging } from "@/app/interfaces/lodging";
 import { redirect, RedirectType } from 'next/navigation'
 import CollapseElement from "@/app/components/ui/CollapseElement";
-import { Metadata, ResolvingMetadata } from "next";
 import { use, useEffect, useState } from "react";
 import { useLodging } from "@/app/hooks/useLodging";
 import Carousel from "@/app/components/data/Carousel";

@@ -6,11 +6,22 @@ import Button from "@/app/components/ui/Button";
 import Link from "@/app/components/ui/Link";
 import type { Metadata } from "next";
 
+/**
+ * Ajout les métadata à la page
+ * 
+ * @function metadata
+ * @returns { Metadata } - Les méta data à ajouter
+ */
 export const metadata: Metadata = {
   title: "Kasa - Se connecter",
   description: "Se connecter au site kasa"
 };
 
+/**
+ * Affiche la page de connexion
+ * 
+ * @function LoginPage
+ */
 export default function LoginPage() {
   return (
     <main className="flex flex-col gap-40 w-full items-center px-16 md:pt-40 md:px-140 h-screen justify-between">

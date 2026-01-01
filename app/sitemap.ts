@@ -1,6 +1,12 @@
 import { getProperties } from '@/app/api/api';
 import { Lodging } from '@/app/interfaces/lodging';
 
+/**
+ * Page du sitemap
+ * 
+ * @function sitemap
+ * @returns { Promise<{ url: string; lastModified: Date; changeFrequency: string; priority: number;}[]> } - Le sitemap
+ */
 export default async function sitemap(): Promise<{
     url: string;
     lastModified: Date;

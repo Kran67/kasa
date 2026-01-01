@@ -7,11 +7,22 @@ import Link from "@/app/components/ui/Link";
 import Checkbox from "@/app/components/ui/Checkbox";
 import type { Metadata } from "next";
 
+/**
+ * Ajout les métadata à la page
+ * 
+ * @function metadata
+ * @returns { Metadata } - Les méta data à ajouter
+ */
 export const metadata: Metadata = {
   title: "Kasa - S'enregister",
   description: "Devenir utlisateur enregistré"
 };
 
+/**
+ * Affiche la page création de compte
+ * 
+ * @function SigninPage
+ */
 export default function SigninPage() {
   return (
     <main className="flex flex-col gap-40 w-full items-center px-16 md:pt-40 md:px-140 h-screen justify-between">
