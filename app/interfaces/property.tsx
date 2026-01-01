@@ -11,4 +11,7 @@ export interface Property {
     rating_avg: number;
     ratings_count: number;
     host: PropertyHost;
+    pictures: string[];
+    equipments: string[];
+    tags: string[];
 }

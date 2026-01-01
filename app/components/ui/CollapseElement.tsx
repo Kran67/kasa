@@ -12,7 +12,7 @@ import Image from 'next/image';
  */
 interface CollapseElementProps {
     title: string;
-    content: string[];
+    content?: string[];
 }
 
 export default function CollapseElement({ title, content }: CollapseElementProps) {
@@ -36,8 +36,8 @@ export default function CollapseElement({ title, content }: CollapseElementProps
                 <Image src={arrowBottom} alt="Plier / déplier le contenu" className="transition-rotate duration-300 ease-out" style={{ rotate: isOpen ? "180deg" : "0deg" }} />
             </div>
             <div className="overflow-hidden transition-height duration-300 ease-out" style={{ height: isOpen ? contentHeight : 0 }}>
-                <div ref={ref} className="grid gap-8 md:w-420 grid-cols-3" style={{ "gridTemplateRows": `repeat(${(content.length ?? 3) / 3}, 1fr)` }}>
-                    {content.map((tag: string, index: number) => (
+                <div ref={ref} className="grid gap-8 md:w-420 grid-cols-3" style={{ "gridTemplateRows": `repeat(${(content?.length ?? 3) / 3}, 1fr)` }}>
+                    {content?.map((tag: string, index: number) => (
                         <Tag
                             key={index}
                             text={tag}
@@ -45,19 +45,6 @@ export default function CollapseElement({ title, content }: CollapseElementProps
                     ))}
                 </div>
             </div>
-
-            {/* <div
-                style={{
-                    height: isOpen ? contentHeight : 0,
-                    overflow: 'hidden',
-                    transition: 'height 0.3s ease',
-                    padding: '0px 2px',
-                }}
-            >
-                <div ref={ref} className='contenu'>
-                    <span>{content}</span>
-                </div>
-            </div> */}
         </div>
     );
 }

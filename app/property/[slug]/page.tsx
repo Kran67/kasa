@@ -1,3 +1,5 @@
+'use client'
+
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { getLodging } from "@/app/api/api";
@@ -10,13 +12,18 @@ import { Lodging } from "@/app/interfaces/lodging";
 import { redirect, RedirectType } from 'next/navigation'
 import CollapseElement from "@/app/components/ui/CollapseElement";
 import { Metadata, ResolvingMetadata } from "next";
+import { use, useEffect, useState } from "react";
+import { useLodging } from "@/app/hooks/useLodging";
+import Carousel from "@/app/components/data/Carousel";
+import { createPortal } from "react-dom";
+import { prepareBodyToShowModal } from "@/app/lib/utils";
 
-type Props = {
-  params: Promise<{ slug: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+//type Props = {
+//  params: Promise<{ slug: string }>
+//  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+//}
 
-export async function generateMetadata({ params, searchParams }: Props,
+/*export async function generateMetadata({ params, searchParams }: Props,
   parent: ResolvingMetadata): Promise<Metadata> {
   const { slug } = await params;
   // on va chercher les information de la propriété
@@ -29,7 +36,7 @@ export async function generateMetadata({ params, searchParams }: Props,
       images: [lodging.cover],
     },
   }
-}
+}*/
 
 /**
  * Affiche les détails d'une propriété
@@ -38,19 +45,35 @@ export async function generateMetadata({ params, searchParams }: Props,
  * @function PropertyPage
  * @param { params: Promise<{ slug: string }> } params - Identifiant de la propriété sous forme de Promise
  */
-export default async function PropertyPage({ params, searchParams }: Props) {
+export default function PropertyPage({ params }: { params: Promise<{ slug: string }> }) {
   // on récupère le paramétre slug (identifiant de la propriété)
-  const slug = (await params).slug;
+  const { slug } = use(params);
   // on va chercher la propriété
-  const lodging: Lodging | any = await getLodging(slug);
-
+  const { lodging, error } = useLodging(slug);
   // si le propriété n'a pas été trouvée, on redirige vers la page 404
-  if (lodging.error) {
+  if (lodging?.error || error) {
     redirect("/404", RedirectType.push);
   }
 
+  const [viewCarousel, setViewCarousel] = useState(false);
+  const [carouselImageIndex, setCarouselImageIndex] = useState(0);
+
+  const viewCarouselAndActiveImage = (viewCarousel: boolean, index: number) => {
+    setViewCarousel(viewCarousel);
+    setCarouselImageIndex(index);
+  }
+
+  useEffect(() => {
+    prepareBodyToShowModal(viewCarousel ? "hidden" : "");
+  }, [viewCarousel]);
+
   return (
-    <main className="flex flex-col gap-10 md:gap-85 w-full items-center md:pt-40 md:px-140">
+    <main className="flex flex-col gap-10 md:gap-85 w-full items-center md:pt-40 md:px-140 relative">
+      {viewCarousel &&
+        createPortal(
+          <Carousel images={lodging?.pictures} imageIndex={carouselImageIndex} closeCarousel={() => setViewCarousel(false)} />,
+          document.body
+        )}
       <Header />
       <div className="flex flex-col w-full gap-10 md:gap-24 md:w-970 px-16 pb-80 md:px-0 md:pb-0">
         <div className="md:flex md:flex-row md:gap-10 w-full md:py-16 md:px-7 border-b-0 md:border-b-1 border-solid border-b-(--light-grey)">
@@ -65,23 +88,53 @@ export default async function PropertyPage({ params, searchParams }: Props) {
         <div className="flex flex-col md:flex-row gap-10 w-full md:flex-wrap">
           <div className="flex flex-col md:flex-row gap-10">
             <div className="rounded-[10] w-358 md:w-303 h-357 overflow-hidden">
-              <Image src={lodging?.pictures[0] ?? Pix} alt="Image de la propriété" className="h-357 w-635 md:w-535 max-w-1240" width={1240} height={827} />
+              {lodging?.pictures[0] && <Image
+                src={lodging?.pictures[0]}
+                alt="Image de la propriété n°1"
+                className="h-357 w-635 md:w-535 max-w-1240 cursor-pointer"
+                width={1240}
+                height={827}
+                onClick={() => viewCarouselAndActiveImage(true, 0)} />}
             </div>
             <div className="flex h-109 md:flex-col gap-10">
               <div className="flex flex-1 gap-10">
                 <div className="rounded-[10] w-83 md:w-146 h-109 md:h-174 overflow-hidden relative">
-                  <Image src={lodging?.pictures[1] ?? Pix} alt="Image de la propriété" fill style={{ objectFit: "cover" }} />
+                  {lodging?.pictures[1] && <Image
+                    src={lodging?.pictures[1]}
+                    alt="Image de la propriété n°2"
+                    className="cursor-pointer"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    onClick={() => viewCarouselAndActiveImage(true, 1)} />}
                 </div>
                 <div className="rounded-[10] w-83 md:w-146 md:h-174 overflow-hidden relative">
-                  <Image src={lodging?.pictures[2] ?? Pix} alt="Image de la propriété" fill style={{ objectFit: "cover" }} />
+                  {lodging?.pictures[2] && <Image
+                    src={lodging?.pictures[2]}
+                    alt="Image de la propriété n°3"
+                    className="cursor-pointer"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    onClick={() => viewCarouselAndActiveImage(true, 2)} />}
                 </div>
               </div>
               <div className="flex gap-10">
                 <div className="rounded-[10] w-83 md:w-146 md:h-174 overflow-hidden relative">
-                  <Image src={lodging?.pictures[3] ?? Pix} alt="Image de la propriété" fill style={{ objectFit: "cover" }} />
+                  {lodging?.pictures[3] && <Image
+                    src={lodging?.pictures[3]}
+                    alt="Image de la propriété n°4"
+                    className="cursor-pointer"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    onClick={() => viewCarouselAndActiveImage(true, 3)} />}
                 </div>
                 <div className="rounded-[10] w-83 md:w-146 md:h-174 overflow-hidden relative">
-                  <Image src={lodging?.pictures[4] ?? Pix} alt="Image de la propriété" fill style={{ objectFit: "cover" }} />
+                  {lodging?.pictures[4] && <Image
+                    src={lodging?.pictures[4]}
+                    alt="Image de la propriété n°5"
+                    className="cursor-pointer"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    onClick={() => viewCarouselAndActiveImage(true, 4)} />}
                 </div>
               </div>
             </div>
