@@ -3,16 +3,17 @@ import "@testing-library/jest-dom";
 import { vi } from "vitest";
 
 // next/navigation (redirect)
+const mockPush = vi.fn();
 vi.mock("next/navigation", () => ({
-    redirect: vi.fn(),
+    redirect: mockPush,
 
     useRouter: () => ({
-        push: vi.fn(),
-        replace: vi.fn(),
-        back: vi.fn(),
-        forward: vi.fn(),
-        refresh: vi.fn(),
-        prefetch: vi.fn(),
+        push: mockPush,
+        replace: mockPush,
+        back: mockPush,
+        forward: mockPush,
+        refresh: mockPush,
+        prefetch: mockPush,
     }),
 
     usePathname: () => "/",
@@ -28,8 +29,8 @@ vi.mock("@/app/contexts/userContext", () => ({
 
 vi.mock("next-client-cookies", () => ({
     useCookies: () => ({
-        get: vi.fn(),
-        set: vi.fn(),
-        remove: vi.fn(),
+        get: mockPush,
+        set: mockPush,
+        remove: mockPush,
     }),
 }));
