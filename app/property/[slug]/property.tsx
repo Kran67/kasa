@@ -54,7 +54,7 @@ export default function Property({ slug }: PropertyProps) {
         <main className="flex flex-col gap-10 md:gap-85 w-full items-center md:pt-40 md:px-140 relative">
             {viewCarousel &&
                 createPortal(
-                    <Carousel images={lodging?.pictures} imageIndex={carouselImageIndex} closeCarousel={() => setViewCarousel(false)} />,
+                    <Carousel images={lodging?.pictures} imageIndex={carouselImageIndex} closeCarousel={() => setViewCarousel(false)} onIndexChange={setCarouselImageIndex} />,
                     document.body
                 )}
             <Header />

@@ -1,6 +1,6 @@
 'use client'
 
-import { MouseEvent, useCallback, useEffect, useState } from "react";
+import { Dispatch, MouseEvent, SetStateAction, useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 
 /**
@@ -12,6 +12,7 @@ interface CarouselProps {
     images: string[];
     imageIndex?: number;
     closeCarousel: () => void;
+    onIndexChange: Dispatch<SetStateAction<number>>;
 }
 
 /**

@@ -8,22 +8,6 @@ import { lodgingService } from "@/app/services/lodgingService";
 /*                                    MOCKS                                   */
 /* -------------------------------------------------------------------------- */
 
-// next/navigation (redirect)
-vi.mock("next/navigation", () => ({
-    redirect: vi.fn(),
-
-    useRouter: () => ({
-        push: vi.fn(),
-        replace: vi.fn(),
-        back: vi.fn(),
-        forward: vi.fn(),
-        refresh: vi.fn(),
-        prefetch: vi.fn(),
-    }),
-
-    usePathname: () => "/",
-    useParams: () => ({}),
-}));
 
 // next/image
 vi.mock("next/image", () => ({
@@ -37,19 +21,24 @@ vi.mock("@/app/services/lodgingService", () => ({
 
 // Carousel (on expose imageIndex pour le tester)
 vi.mock("@/app/components/data/Carousel", () => ({
-    default: ({ imageIndex, closeCarousel }: any) => (
+    default: ({ imageIndex, closeCarousel, onIndexChange, images }: any) => (
         <div data-testid="carousel">
             <span data-testid="carousel-index">{imageIndex}</span>
+            <button
+                data-testid="prevBtn"
+                onClick={() => onIndexChange?.(imageIndex === 0 ? images.length - 1 : imageIndex - 1)}
+            >
+                Précédent
+            </button>
+            <button
+                data-testid="nextBtn"
+                onClick={() => onIndexChange?.(imageIndex === images.length - 1 ? 0 : imageIndex + 1)}
+            >
+                Suivant
+            </button>
             <button onClick={closeCarousel}>Fermer</button>
         </div>
     ),
-}));
-
-vi.mock("@/app/contexts/userContext", () => ({
-    useUser: () => ({
-        user: null,
-        isAuthenticated: false,
-    }),
 }));
 
 /* -------------------------------------------------------------------------- */
@@ -157,6 +146,53 @@ describe("Property – Carousel", () => {
             screen.getByTestId("property-image-4")
         );
 
+        expect(
+            screen.getByTestId("carousel-index")
+        ).toHaveTextContent("3");
+    });
+
+    it("ouvre le carousel avec l’index correct puis affiche l'image suivante", async () => {
+        const user = userEvent.setup();
+
+        render(<Property slug="slug-test" />);
+
+        await user.click(
+            screen.getByTestId("property-image-1")
+        );
+
+        expect(
+            screen.getByTestId("carousel-index")
+        ).toHaveTextContent("0");
+
+        await user.click(
+            screen.getByTestId("nextBtn")
+        );
+
+        expect(
+            screen.getByTestId("carousel-index")
+        ).toHaveTextContent("1");
+    });
+
+    it("affiche la dernière image quand on clique sur prev depuis la première image (boucle)", async () => {
+        const user = userEvent.setup();
+
+        render(<Property slug="slug-test" />);
+
+        // Ouvrir le carousel sur l'image 1 (index 0)
+        await user.click(
+            screen.getByTestId("property-image-1")
+        );
+
+        expect(
+            screen.getByTestId("carousel-index")
+        ).toHaveTextContent("0");
+
+        // Cliquer sur le bouton précédent pour aller à la dernière image
+        await user.click(
+            screen.getByTestId("prevBtn")
+        );
+
+        // Doit afficher l'index 3 (dernière image, car il y a 4 images : 0, 1, 2, 3)
         expect(
             screen.getByTestId("carousel-index")
         ).toHaveTextContent("3");
