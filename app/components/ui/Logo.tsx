@@ -28,6 +28,6 @@ export default function LogoPage({ size = LogoSizes.Large, className }: LogoProp
             src={size === LogoSizes.Large ? Logo : LogoSmall}
             alt="Image du logo"
             width={size === LogoSizes.Large ? 114 : 46}
-            height={size === LogoSizes.Large ? 40 : 53} />
+        />
     );
 }
