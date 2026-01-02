@@ -20,6 +20,7 @@ interface InputProps {
     autoComplete?: string;
     maxLength?: number;
     className?: string;
+    showLabel?: boolean;
 }
 
 /**
@@ -39,8 +40,9 @@ interface InputProps {
  * @param {string?} IconButtonProps.autoComplete - Indique si le champ de saisie doit gérer l'auto complétion
  * @param {number?} IconButtonProps.maxLength - Longeur maximale du texte du champ de saisie
  * @param {string?} IconButtonProps.className - Classes css du champ de saisie
+ * @param {boolean?} IconButtonProps.showLabel - Indique si le label du champ est visible ou non
  */
-export default function Input({ name, label, type, value, placeHolder, required, width, onChange, hasError, autoComplete = "on", maxLength, className }: InputProps) {
+export default function Input({ name, label, type, value, placeHolder, required, width, onChange, hasError, autoComplete = "on", maxLength, className, showLabel = true }: InputProps) {
     const classNames: string = [
         "input",
         "flex",
@@ -54,10 +56,7 @@ export default function Input({ name, label, type, value, placeHolder, required,
 
     return (
         <div className={classNames} style={{ "minWidth": width, "maxWidth": width }}>
-            {label
-                ? <label className="text-sm text-(--black) font-medium" htmlFor={name}>{label}&nbsp;{required ? "*" : ""}</label>
-                : null
-            }
+            <label className={"text-sm text-(--black) font-medium " + (!showLabel ? "h-0 w-0" : "")} htmlFor={name}>{label}{required ? " *" : ""}</label>
             <div className={"flex justify-between items-center bg-(--white) border " +
                 (!hasError ? "border-(--light-grey)" : "border-(--error)") + " border-solid rounded-[4px] py-16 px-10 gap-10 h-40"}>
                 <input

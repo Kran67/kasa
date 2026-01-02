@@ -7,6 +7,8 @@ import MenuItem from "@/app/components/ui/MenuItem";
 import Link from "@/app/components/ui/Link";
 import IconButton from "@/app/components/ui/IconButton";
 import Button from "@/app/components/ui/Button";
+import { useUser } from "@/app/contexts/userContext";
+import { Cookies, useCookies } from 'next-client-cookies';
 
 /**
  * Interface pour des paramétres pour l'affichage du menu actif
@@ -26,6 +28,14 @@ interface HeaderProps {
  */
 export default function Header({ activeMenu }: HeaderProps) {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
+    const { user, clear } = useUser();
+    const cookies: Cookies = useCookies();
+
+    const handleLogout = () => {
+        cookies.remove("token");
+        cookies.remove("userId");
+        clear();
+    }
 
     return (
         <header
@@ -65,6 +75,17 @@ export default function Header({ activeMenu }: HeaderProps) {
                         svgBgFill={activeMenu === HeaderMenuItems.Messaging ? "#99331A" : "transparent"}
                         svgFill={activeMenu === HeaderMenuItems.Messaging ? "#99331A" : "transparent"}
                         title="Voir mes messages" />
+                    {user && <div className="w-0 h-5 border-l-1 border-solid border-(--main-red)"></div>}
+                    {user && <IconButton
+                        icon={IconButtonImages.Logout}
+                        url="/"
+                        className="cursor-pointer"
+                        imgWidth={12}
+                        imgHeight={12}
+                        svgStroke="#99331A"
+                        svgFill="transparent"
+                        onClick={() => handleLogout()}
+                        title="Se déconnecter" />}
                 </div>
             </div>
             <IconButton

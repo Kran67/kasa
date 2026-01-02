@@ -89,7 +89,6 @@ export default function MessengingPage() {
                   </div>
                   <div className="flex flex-col justify-between relative">
                     <span className="text-sm text-(--dark-grey) font-normal">11:04 am</span>
-                    <span className="absolute w-6 h-6 right-0 bottom-10 text-(--white)">&#8226;</span>
                   </div>
                 </div>
               </div>
@@ -104,7 +103,6 @@ export default function MessengingPage() {
                   </div>
                   <div className="flex flex-col justify-between relative">
                     <span className="text-sm text-(--dark-grey) font-normal">11:04 am</span>
-                    <span className="absolute w-6 h-6 right-0 bottom-10 text-(--white)">&#8226;</span>
                   </div>
                 </div>
               </div>
@@ -119,7 +117,6 @@ export default function MessengingPage() {
                   </div>
                   <div className="flex flex-col justify-between relative">
                     <span className="text-sm text-(--dark-grey) font-normal">11:04 am</span>
-                    <span className="absolute w-6 h-6 right-0 bottom-10 text-(--white)">&#8226;</span>
                   </div>
                 </div>
               </div>
@@ -134,7 +131,6 @@ export default function MessengingPage() {
                   </div>
                   <div className="flex flex-col justify-between relative">
                     <span className="text-sm text-(--dark-grey) font-normal">11:04 am</span>
-                    <span className="absolute w-6 h-6 right-0 bottom-10 text-(--white)">&#8226;</span>
                   </div>
                 </div>
               </div>
@@ -149,7 +145,6 @@ export default function MessengingPage() {
                   </div>
                   <div className="flex flex-col justify-between relative">
                     <span className="text-sm text-(--dark-grey) font-normal">11:04 am</span>
-                    <span className="absolute w-6 h-6 right-0 bottom-10 text-(--white)">&#8226;</span>
                   </div>
                 </div>
               </div>
@@ -252,7 +247,7 @@ export default function MessengingPage() {
           </div>
           <div className="flex flex-col gap-10 py-21 px-30 border-t-1 border-solid border-t-(--light-grey) bg-(--white)">
             <div className="flex border border-solid border-(--light-grey) rounded-[10] h-95 relative">
-              <Input name="message" type={InputTypes.Text} placeHolder="Envoyer un message" className="text-sm text-(--dark-grey) font-normal" />
+              <Input name="message" type={InputTypes.Text} label="Envoyer un message" placeHolder="Envoyer un message" className="text-sm text-(--dark-grey) font-normal" />
               <IconButton
                 icon={IconButtonImages.TopArrow}
                 imgWidth={6}

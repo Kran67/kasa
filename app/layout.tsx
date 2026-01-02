@@ -4,6 +4,10 @@ import "@/app/globals.css";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { FavoritesProvider } from "@/app/contexts/FavoritesProvider";
 import { CookiesProvider } from 'next-client-cookies/server';
+import type { User } from "@/app/interfaces/user";
+import { UserProvider } from "@/app/contexts/userContext";
+import { getProfile } from "./api/api";
+import { cookies } from "next/headers";
 
 /**
  * Ajout de la police de caractère utilisée sur le site
@@ -36,24 +40,28 @@ export const metadata: Metadata = {
 /**
  * Affiche la mise en page globale du site
  * 
+ * @async
  * @function RootLayout
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const userId: string | undefined = cookieStore.get("userId")?.value;
+  const user: User | null = await getProfile(userId ?? "");
+
   return (
     <html lang="fr">
       <head>
       </head>
       <body className={`${inter.variable} antialiased items-center flex`}>
-        <FavoritesProvider>
-          <CookiesProvider>{children}</CookiesProvider>
-        </FavoritesProvider>
-        {/* <UserProvider initialUser={user}>
-          <CookiesProvider>{children}</CookiesProvider>
-        </UserProvider> */}
+        <UserProvider initialUser={user}>
+          <FavoritesProvider>
+            <CookiesProvider>{children}</CookiesProvider>
+          </FavoritesProvider>
+        </UserProvider>
       </body>
     </html>
   );

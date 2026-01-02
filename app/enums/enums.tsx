@@ -20,7 +20,8 @@ export enum IconButtonImages {
     Plus = "plus",
     Menu = "menu",
     TopArrow = "top_arrow",
-    Star = "star"
+    Star = "star",
+    Logout = "logout"
 }
 
 export enum ButtonTypes {
@@ -32,4 +33,10 @@ export enum InputTypes {
     Text = 'text',
     Password = 'password',
     Date = 'date'
+}
+
+export enum UserRole {
+    Owner,
+    client,
+    admin
 }

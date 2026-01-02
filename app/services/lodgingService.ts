@@ -4,11 +4,11 @@ import type { Property } from "@/app/interfaces/property";
 /**
  * Permet de récupèrer une propriété depuis la base de données
  * 
- * @function useLodging
+ * @function lodgingService
  * @param {string } id - Identifiant de la propriété
  * @returns { lodging: Property | any, loading: boolean, refresh: any, error: boolean }
  */
-export function useLodging(id: string): { lodging: Property | any, loading: boolean, refresh: any, error: boolean } {
+export function lodgingService(id: string): { lodging: Property | any, loading: boolean, refresh: any, error: boolean } {
     const [lodging, setLodging] = useState<Property | any>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false)

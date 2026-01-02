@@ -9,7 +9,7 @@ import Button from "@/app/components/ui/Button";
 import { redirect, RedirectType } from 'next/navigation'
 import CollapseElement from "@/app/components/ui/CollapseElement";
 import { useEffect, useState } from "react";
-import { useLodging } from "@/app/hooks/useLodging";
+import { lodgingService } from "@/app/services/lodgingService";
 import Carousel from "@/app/components/data/Carousel";
 import { createPortal } from "react-dom";
 import { prepareBodyToShowModal } from "@/app/lib/utils";
@@ -32,7 +32,7 @@ interface PropertyProps {
  */
 export default function Property({ slug }: PropertyProps) {
     // on va chercher la propriété
-    const { lodging, error } = useLodging(slug);
+    const { lodging, error } = lodgingService(slug);
     // si le propriété n'a pas été trouvée, on redirige vers la page 404
     if (lodging?.error || error) {
         redirect("/404", RedirectType.push);

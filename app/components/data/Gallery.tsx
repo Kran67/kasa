@@ -2,8 +2,8 @@
 
 import { Property } from "@/app/interfaces/property";
 import PropertyCard from "@/app/components/data/PropertyCard";
-import { useFavorites } from "@/app/hooks/useFavorites";
-import { useProperties } from "@/app/hooks/useProperties";
+import { favoritesService } from "@/app/services/favoritesService";
+import { propertiesService } from "@/app/services/propertiesService";
 
 /**
  * Ajout les métadata à la page
@@ -50,11 +50,11 @@ export default function Gallery({ onlyFav }: GalleryProps) {
     //let properties: Property[] | any = [];
     if (onlyFav) {
         // on va chercher les favoris lié à l'utilisateur courant dans la session courante
-        const { favorites } = useFavorites();
+        const { favorites } = favoritesService();
         properties = favorites;
     } else {
         // on va chercher les propriétés
-        properties = useProperties().properties;
+        properties = propertiesService().properties;
     }
     // si aucune propriété n'a pas été trouvée, on donne un tableau vide
     if (properties?.error) {

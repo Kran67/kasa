@@ -7,11 +7,11 @@ import { Property } from "@/app/interfaces/property"
  * @interface FavoritesContextType
  */
 export interface FavoritesContextType {
-    favorites: Property[]
-    addFavorite: (property: Property) => void
-    removeFavorite: (id: string) => void
-    toggleFavorite: (property: Property) => void
-    isFavorite: (id: string) => boolean
+    favorites: Property[];
+    addFavorite: (property: Property) => void;
+    removeFavorite: (id: string) => void;
+    toggleFavorite: (property: Property) => void;
+    isFavorite: (id: string) => boolean;
 }
 
 /**

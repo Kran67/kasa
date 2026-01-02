@@ -4,10 +4,10 @@ import { FavoritesContext, FavoritesContextType } from "@/app/contexts/Favorites
 /**
  * Permet de récupèrer les favoris depuis le context
  * 
- * @function useFavorites
+ * @function favoritesService
  * @returns FavoritesContextType | null
  */
-export function useFavorites() {
+export function favoritesService() {
     const context: FavoritesContextType | null = useContext(FavoritesContext);
 
     if (!context) {

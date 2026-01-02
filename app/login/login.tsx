@@ -8,6 +8,7 @@ import Button from "@/app/components/ui/Button";
 import Link from "@/app/components/ui/Link";
 import { FormEvent, useState } from "react";
 import { Cookies, useCookies } from 'next-client-cookies';
+import { login } from "@/app/services/authService";
 
 /**
  * Affiche la page de connexion
@@ -24,19 +25,14 @@ export default function Login() {
     const handleLogin: (e: FormEvent<Element>) => Promise<void> = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const res: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
-        });
-
-        const data = await res.json()
-        if (res.ok) {
-            cookies.set("token", data.token, { expires: 1 });
+        const res = await login(email, password);
+        if (!res.error) {
+            cookies.set("token", res.token, { expires: 1 });
+            cookies.set("userId", res.user.id, { expires: 1 });
             window.location.href = "/";
         } else {
             setError(true);
-            setErrorMsg(data.error);
+            setErrorMsg(res.error);
         }
     };
 
@@ -76,7 +72,7 @@ export default function Login() {
                         }}
                         hasError={error} />
                 </div>
-                {error && <span className="text-sm text-(-main-red) font-normal">{errorMsg}</span>}
+                {error && <span className="text-sm text-(--main-red) font-bold">{errorMsg}</span>}
                 <div className="flex flex-col gap-22 w-326 md:w-360 items-center">
                     <Button text="Se connecter" url='' className="flex justify-center bg-(--main-red) rounded-[10] p-8 px-32 text-(--white) md:w-230" />
                     <div className="flex flex-col gap-12 w-full items-center">

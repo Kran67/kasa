@@ -6,7 +6,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import { IconButtonImages } from "@/app/enums/enums";
 import IconButton from "@/app/components/ui/IconButton";
 import { Property } from "@/app/interfaces/property";
-import { useFavorites } from "@/app/hooks/useFavorites";
+import { favoritesService } from "@/app/services/favoritesService";
 
 /**
  * Interface pour des paramétres pour l'affichage des détails d'une proriété
@@ -26,7 +26,7 @@ interface PropsPC {
  */
 export default function PropertyCard({ property }: PropsPC) {
     const router: AppRouterInstance = useRouter();
-    const { toggleFavorite, isFavorite } = useFavorites();
+    const { toggleFavorite, isFavorite } = favoritesService();
 
     // au clique sur les détails, redirection vers la page de la propriété
     const handleClick: () => void = () => {

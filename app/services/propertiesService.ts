@@ -4,10 +4,10 @@ import type { Property } from "@/app/interfaces/property";
 /**
  * Permet de récupèrer les propriétés depuis la base de données
  * 
- * @function useProperties
+ * @function propertiesService
  * @returns { properties: Property[] | null, loading: boolean, refresh: any, error: boolean }
  */
-export function useProperties(): { properties: Property[] | null, loading: boolean, refresh: any, error: boolean } {
+export function propertiesService(): { properties: Property[] | null, loading: boolean, refresh: any, error: boolean } {
     const [properties, setProperties] = useState<Property[] | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);

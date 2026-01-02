@@ -9,7 +9,8 @@ import Link from "@/app/components/ui/Link";
 import Checkbox from "@/app/components/ui/Checkbox";
 import { FormEvent, useState } from "react";
 import { Cookies, useCookies } from "next-client-cookies";
-import { validatePassword } from "../lib/utils";
+import { validatePassword } from "@/app/lib/utils";
+import { signin } from "@/app/services/authService";
 
 /**
  * Affiche la page création de compte
@@ -37,22 +38,16 @@ export default function Signin() {
             }
         }
 
-        const res: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/register`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: `${firstname} ${lastname}`, email, password, role: "owner" }),
-        });
-
-        const data = await res.json()
-        if (res.ok) {
-            cookies.set("token", data.token, { expires: 1 });
+        const res = await signin(`${firstname} ${lastname}`, email, password);
+        if (!res.error) {
+            cookies.set("token", res.token, { expires: 1 });
             window.location.href = "/";
         } else {
             if (res.status === 409) {
                 setErrorMsg("");
             } else {
                 setError(true);
-                setErrorMsg(data.error);
+                setErrorMsg(res.error);
             }
         }
     };
@@ -123,7 +118,7 @@ export default function Signin() {
                         <span className="ml-3 underline">conditions générales d’utilisation</span>
                     </div>
                 </div>
-                {error && <span className="text-sm text-(-main-red) font-normal">{errorMsg}</span>}
+                {error && <span className="text-sm text-(--main-red) font-bold">{errorMsg}</span>}
                 <div className="flex flex-col gap-22 w-326 md:w-360 items-center">
                     <Button text="S’inscrire" url="" className="flex justify-center bg-(--main-red) rounded-[10] p-8 px-32 text-(--white) md:w-230" />
                     <div className="flex flex-col gap-12 w-full items-center">
