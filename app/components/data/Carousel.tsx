@@ -80,7 +80,7 @@ export default function Carousel({ images, imageIndex = 0, closeCarousel }: Caro
     });
 
     return (
-        <aside className="fixed inset-0 z-1 md:px-140 md:py-40 w-full h-screen bg-(--white) overflow-hidden" onClick={closeCarousel}>
+        <aside id="carousel" className="fixed inset-0 z-1 md:px-140 md:py-40 w-full h-screen bg-(--white) overflow-hidden" onClick={closeCarousel}>
             {total > 1 && (
                 <>
                     <button

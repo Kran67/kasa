@@ -72,6 +72,7 @@ export default function Property({ slug }: PropertyProps) {
                     <div className="flex flex-col md:flex-row gap-10">
                         <div className="rounded-[10] w-358 md:w-303 h-357 overflow-hidden">
                             {lodging?.pictures[0] && <Image
+                                data-testid="property-image-1"
                                 src={lodging?.pictures[0]}
                                 alt="Image de la propriété n°1"
                                 className="h-357 w-635 md:w-535 max-w-1240 cursor-pointer"
@@ -83,6 +84,7 @@ export default function Property({ slug }: PropertyProps) {
                             <div className="flex flex-1 gap-10">
                                 <div className="rounded-[10] w-83 md:w-146 h-109 md:h-174 overflow-hidden relative">
                                     {lodging?.pictures[1] && <Image
+                                        data-testid="property-image-2"
                                         src={lodging?.pictures[1]}
                                         alt="Image de la propriété n°2"
                                         className="cursor-pointer"
@@ -92,6 +94,7 @@ export default function Property({ slug }: PropertyProps) {
                                 </div>
                                 <div className="rounded-[10] w-83 md:w-146 md:h-174 overflow-hidden relative">
                                     {lodging?.pictures[2] && <Image
+                                        data-testid="property-image-3"
                                         src={lodging?.pictures[2]}
                                         alt="Image de la propriété n°3"
                                         className="cursor-pointer"
@@ -103,6 +106,7 @@ export default function Property({ slug }: PropertyProps) {
                             <div className="flex gap-10">
                                 <div className="rounded-[10] w-83 md:w-146 md:h-174 overflow-hidden relative">
                                     {lodging?.pictures[3] && <Image
+                                        data-testid="property-image-4"
                                         src={lodging?.pictures[3]}
                                         alt="Image de la propriété n°4"
                                         className="cursor-pointer"
@@ -112,6 +116,7 @@ export default function Property({ slug }: PropertyProps) {
                                 </div>
                                 <div className="rounded-[10] w-83 md:w-146 md:h-174 overflow-hidden relative">
                                     {lodging?.pictures[4] && <Image
+                                        data-testid="property-image-5"
                                         src={lodging?.pictures[4]}
                                         alt="Image de la propriété n°5"
                                         className="cursor-pointer"
