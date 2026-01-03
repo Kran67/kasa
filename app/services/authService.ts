@@ -1,4 +1,6 @@
 import { cache } from "react";
+import { usersMock } from "../mocks/users";
+import { User } from "../interfaces/user";
 
 /**
  * Permet de connecter un utilisateur
@@ -11,13 +13,25 @@ import { cache } from "react";
  */
 export const login = cache(async (email: string, password: string) => {
     try {
-        const res: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
-        });
+        if (process.env.NEXT_PUBLIC_MOCK_MODE === "true") {
+            const user: User | undefined = usersMock.find((u) => u.email === email);
+            if (user) {
+                return {
+                    token: "mock_token",
+                    user: usersMock.find((u) => u.email === email)
+                };
+            } else {
+                return { error: "Invalid credentials" }
+            }
+        } else {
+            const res: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
 
-        return await res.json();
+            return await res.json();
+        }
     } catch (err) {
         console.error("Erreur lors de la connexion :", err);
         return null;

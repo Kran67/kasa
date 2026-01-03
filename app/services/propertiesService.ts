@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Property } from "@/app/interfaces/property";
+import { propertiesMock } from "@/app/mocks/properties";
 
 /**
  * Permet de récupèrer les propriétés depuis la base de données
@@ -16,21 +17,26 @@ export function propertiesService(): { properties: Property[] | null, loading: b
     async function refresh() {
         setLoading(true);
         try {
-            const res: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/properties`, {
-                method: "GET",
-                cache: "no-store",
-                headers: { 'Content-Type': 'application/json', }
-            });
+            if (process.env.NEXT_PUBLIC_MOCK_MODE === "true") {
+                setProperties(propertiesMock);
+            } else {
 
-            if (!res.ok) {
-                setProperties(null);
-                setError(true);
-                return;
+                const res: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/properties`, {
+                    method: "GET",
+                    cache: "no-store",
+                    headers: { 'Content-Type': 'application/json', }
+                });
+
+                if (!res.ok) {
+                    setProperties(null);
+                    setError(true);
+                    return;
+                }
+
+                const data = await res.json();
+
+                setProperties(data);
             }
-
-            const data = await res.json();
-
-            setProperties(data);
         } catch (err) {
             console.error("Erreur fetch properties:", err);
             setProperties(null);

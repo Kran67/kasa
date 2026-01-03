@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Property } from "@/app/interfaces/property";
+import { propertiesMock } from "@/app/mocks/properties";
 
 /**
  * Permet de récupèrer une propriété depuis la base de données
@@ -17,21 +18,25 @@ export function lodgingService(id: string): { lodging: Property | any, loading: 
     async function refresh() {
         setLoading(true);
         try {
-            const res: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/properties/${id}`, {
-                method: "GET",
-                cache: "no-store",
-                headers: { 'Content-Type': 'application/json', }
-            });
+            if (process.env.NEXT_PUBLIC_MOCK_MODE === "true") {
+                setLodging(propertiesMock.find((p) => p.id === id));
+            } else {
+                const res: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/properties/${id}`, {
+                    method: "GET",
+                    cache: "no-store",
+                    headers: { 'Content-Type': 'application/json', }
+                });
 
-            if (!res.ok) {
-                setLodging(null);
-                setError(true);
-                return;
+                if (!res.ok) {
+                    setLodging(null);
+                    setError(true);
+                    return;
+                }
+
+                const data = await res.json();
+
+                setLodging(data);
             }
-
-            const data = await res.json();
-
-            setLodging(data);
         } catch (err) {
             console.error("Erreur fetch property:", err);
             setLodging(null);
