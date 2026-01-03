@@ -1,6 +1,6 @@
 # Kasa – Application de location immobilière (React + Next.js)
 
-![Logo Kasa](app/assets/logo.svg)
+![Logo Kasa](app/assets/images/logo.svg)
 
 ## Description
 Kasa est une application web de location d’appartements et de maisons entre particuliers.
@@ -69,7 +69,7 @@ Résultat :
 
 ## Performance et accessibilité
 
-- Lighthouse
+Lighthouse
 | Page |Result|
 | --- |------|
 | Accueil | ![Accueil](app/assets/results/lighthouse/home.jpg) |
@@ -80,7 +80,7 @@ Résultat :
 | Connexion | ![Connexion](app/assets/results/lighthouse/login.jpg) |
 | Inscription | ![Inscription](app/assets/results/lighthouse/signin.jpg) |
 
-- WAVE
+WAVE
 | Page |Result|
 | --- |------|
 | Accueil | ![Accueil](app/assets/results/wave/home.jpg) |
