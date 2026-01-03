@@ -69,7 +69,7 @@ export default function Gallery({ onlyFav }: GalleryProps) {
                     __html: JSON.stringify(generateMetadata(properties ?? [])).replace(/</g, '\\u003c'),
                 }}
             />
-            <div className="flex flex-wrap gap-24 w-full md:w-1113 px-16 md:p-0">
+            <div className="flex flex-wrap gap-24 w-full xl:w-1113 md:w-768 px-16 md:p-0 justify-center">
                 {properties?.map((property: Property, index: number) => (
                     <PropertyCard key={index} property={property} />
                 ))}

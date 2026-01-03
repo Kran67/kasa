@@ -37,7 +37,7 @@ export default function PropertyCard({ property }: PropsPC) {
     const favorite = isFavorite(property.id);
 
     return (
-        <div className="flex flex-col rounded-[10px] bg-(--white) w-355 relative">
+        <div className="flex flex-col rounded-[10px] bg-(--white) w-full md:w-355 relative">
             <IconButton
                 icon={IconButtonImages.Heart}
                 imgWidth={16}

@@ -9,6 +9,7 @@ import IconButton from "@/app/components/ui/IconButton";
 import Button from "@/app/components/ui/Button";
 import { useUser } from "@/app/contexts/userContext";
 import { Cookies, useCookies } from 'next-client-cookies';
+import { prepareBodyToShowModal } from "@/app/lib/utils";
 
 /**
  * Interface pour des paramétres pour l'affichage du menu actif
@@ -94,19 +95,36 @@ export default function Header({ activeMenu }: HeaderProps) {
                 imgWidth={isMenuVisible ? 25 : 28}
                 imgHeight={isMenuVisible ? 25 : 20}
                 svgFill={isMenuVisible ? "#0D0D0D" : "#565656"}
-                onClick={() => setIsMenuVisible(!isMenuVisible)} />
+                onClick={() => {
+                    setIsMenuVisible(!isMenuVisible);
+                    prepareBodyToShowModal(isMenuVisible ? "" : "hidden");
+                }} />
             <div
-                className={`flex flex-col gap-28 absolute top-85 left-0 right-0 bottom-0 pt-28 px-16 z-1 bg-(--white) items-start ` +
+                className={`flex flex-col gap-28 absolute top-85 left-0 right-0 h-full pt-28 px-16 z-2 bg-(--white) items-start ` +
                     (isMenuVisible ? "" : "hidden")}>
-                <Link text="Accueil" url="/" className="text-2xl hover:text-(--main-red) hover:font-bold" />
+                <Link
+                    text="Accueil"
+                    url="/"
+                    className={"text-2xl hover:text-(--main-red) hover:font-bold w-full " + (activeMenu === HeaderMenuItems.Home ? "text-(--main-red)" : "text-black")} />
                 <hr className="w-full h-1 border-(--light-grey)" />
-                <Link text="À propos" url="/about" className="text-2xl hover:text-(--main-red) hover:font-bold" />
+                <Link
+                    text="À propos"
+                    url="/about"
+                    className={"text-2xl hover:text-(--main-red) hover:font-bold w-full " + (activeMenu === HeaderMenuItems.About ? "text-(--main-red)" : "text-black")} />
                 <hr className="w-full h-1 border-(--light-grey)" />
-                <Link text="Messagerie" url="/messenging" className="text-2xl hover:text-(--main-red) hover:font-bold" />
+                <Link
+                    text="Messagerie"
+                    url="/messenging"
+                    className={"text-2xl hover:text-(--main-red) hover:font-bold w-full " + (activeMenu === HeaderMenuItems.Messaging ? "text-(--main-red)" : "text-black")} />
                 <hr className="w-full h-1 border-(--light-grey)" />
-                <Link text="Favoris" url="/favorites" className="text-2xl hover:text-(--main-red) hover:font-bold" />
+                <Link
+                    text="Favoris"
+                    url="/favorites"
+                    className={"text-2xl hover:text-(--main-red) hover:font-bold w-full " + (activeMenu === HeaderMenuItems.Favorites ? "text-(--main-red)" : "text-black")} />
                 <hr className="w-full h-1 border-(--light-grey)" />
-                <Button text="Ajouter un logement" className="flex items-center bg-(--main-red) rounded-[10] p-8 px-32 text-(--white)" />
+                <Button
+                    text="Ajouter un logement"
+                    className="flex items-center bg-(--main-red) rounded-[10] p-8 px-32 text-(--white) w-full" />
             </div>
         </header >
     );

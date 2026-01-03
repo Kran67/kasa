@@ -4,6 +4,7 @@ import { HeaderMenuItems, IconButtonImages, InputTypes } from "@/app/enums/enums
 import IconButton from "@/app/components/ui/IconButton";
 import Input from "@/app/components/ui/Input";
 import { Metadata } from "next";
+import Link from "../components/ui/Link";
 
 /**
  * Ajout les métadata à la page
@@ -25,8 +26,8 @@ export default function MessengingPage() {
   return (
     <main className="flex flex-col gap-51 md:gap-40 w-full items-center md:pt-40 md:px-140">
       <Header activeMenu={HeaderMenuItems.Messaging} />
-      <div className="flex rounded-[10]">
-        <div className="flex flex-col gap-7 border-r-1 border-solid border-(--light-grey) py-11 px-8 w-376 bg-(--white) ">
+      <div className="flex rounded-[10] w-full xl:w-1059">
+        <div className="flex flex-col gap-7 border-r-1 border-solid border-(--light-grey) py-11 lg:px-8 w-full lg:w-376 bg-(--white) ">
           <div className="flex gap-10 py-16 px-8">
             <IconButton url="/" icon={IconButtonImages.LeftArrow} imgWidth={8} imgHeight={6} text="&nbsp;Retour" title="Retour" className="text-sm text-(--dark-grey) py-8 px-16 bg-(--light-grey) rounded-[10]" />
           </div>
@@ -38,7 +39,7 @@ export default function MessengingPage() {
                   <div className="flex gap-20 items-center">
                     <div className="flex rounded-[5] w-44 h-45 bg-(--light-grey)"></div>
                     <div className="flex flex-col gap-4 w-190">
-                      <span className="text-sm text-black">Utilisateur</span>
+                      <Link url="/messages" className="text-sm text-black" text="Utilisateur" />
                       <span className="text-[10px] text-(--dark-grey) truncate">Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</span>
                     </div>
                   </div>
@@ -53,7 +54,7 @@ export default function MessengingPage() {
                   <div className="flex gap-20 items-center">
                     <div className="flex rounded-[5] w-44 h-45 bg-(--light-grey)"></div>
                     <div className="flex flex-col gap-4 w-190">
-                      <span className="text-sm text-black">Utilisateur</span>
+                      <Link url="/messages" className="text-sm text-black" text="Utilisateur" />
                       <span className="text-[10px] text-(--dark-grey) truncate">Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</span>
                     </div>
                   </div>
@@ -68,7 +69,7 @@ export default function MessengingPage() {
                   <div className="flex gap-20 items-center">
                     <div className="flex rounded-[5] w-44 h-45 bg-(--light-grey)"></div>
                     <div className="flex flex-col gap-4 w-190">
-                      <span className="text-sm text-black">Utilisateur</span>
+                      <Link url="/messages" className="text-sm text-black" text="Utilisateur" />
                       <span className="text-[10px] text-(--dark-grey) truncate">Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</span>
                     </div>
                   </div>
@@ -83,7 +84,7 @@ export default function MessengingPage() {
                   <div className="flex gap-20 items-center">
                     <div className="flex rounded-[5] w-44 h-45 bg-(--light-grey)"></div>
                     <div className="flex flex-col gap-4 w-190">
-                      <span className="text-sm text-black">Utilisateur</span>
+                      <Link url="/messages" className="text-sm text-black" text="Utilisateur" />
                       <span className="text-[10px] text-(--dark-grey) truncate">Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</span>
                     </div>
                   </div>
@@ -97,7 +98,7 @@ export default function MessengingPage() {
                   <div className="flex gap-20 items-center">
                     <div className="flex rounded-[5] w-44 h-45 bg-(--light-grey)"></div>
                     <div className="flex flex-col gap-4 w-190">
-                      <span className="text-sm text-black">Utilisateur</span>
+                      <Link url="/messages" className="text-sm text-black" text="Utilisateur" />
                       <span className="text-[10px] text-(--dark-grey) truncate">Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</span>
                     </div>
                   </div>
@@ -111,7 +112,7 @@ export default function MessengingPage() {
                   <div className="flex gap-20 items-center">
                     <div className="flex rounded-[5] w-44 h-45 bg-(--light-grey)"></div>
                     <div className="flex flex-col gap-4 w-190">
-                      <span className="text-sm text-black">Utilisateur</span>
+                      <Link url="/messages" className="text-sm text-black" text="Utilisateur" />
                       <span className="text-[10px] text-(--dark-grey) truncate">Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</span>
                     </div>
                   </div>
@@ -125,7 +126,7 @@ export default function MessengingPage() {
                   <div className="flex gap-20 items-center">
                     <div className="flex rounded-[5] w-44 h-45 bg-(--light-grey)"></div>
                     <div className="flex flex-col gap-4 w-190">
-                      <span className="text-sm text-black">Utilisateur</span>
+                      <Link url="/messages" className="text-sm text-black" text="Utilisateur" />
                       <span className="text-[10px] text-(--dark-grey) truncate">Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</span>
                     </div>
                   </div>
@@ -139,7 +140,7 @@ export default function MessengingPage() {
                   <div className="flex gap-20 items-center">
                     <div className="flex rounded-[5] w-44 h-45 bg-(--light-grey)"></div>
                     <div className="flex flex-col gap-4 w-190">
-                      <span className="text-sm text-black">Utilisateur</span>
+                      <Link url="/messages" className="text-sm text-black" text="Utilisateur" />
                       <span className="text-[10px] text-(--dark-grey) truncate">Bonjour, votre appartement est-il disponible pour le week-end du 12 au 14 octobre ?</span>
                     </div>
                   </div>
@@ -151,7 +152,7 @@ export default function MessengingPage() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-683">
+        <div className="lg:flex flex-col hidden w-683">
           <div className="flex flex-col gap-24 py-40 px-42">
             <div className="flex flex-col gap-24">
               <div className="flex flex-col gap-40">
@@ -259,8 +260,8 @@ export default function MessengingPage() {
             </div>
           </div>
         </div>
-      </div >
+      </div>
       <Footer />
-    </main >
+    </main>
   );
 }

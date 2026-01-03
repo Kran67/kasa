@@ -26,7 +26,7 @@ export default function AboutPage() {
     return (
         <main className="flex flex-col gap-40 w-full items-center md:pt-40 md:px-140">
             <Header activeMenu={HeaderMenuItems.About} />
-            <div className="flex flex-col gap-51 md:gap-40 w-full md:w-1115 items-center px-16 md:pb-80 ">
+            <div className="flex flex-col gap-51 md:gap-40 w-full xl:w-1115 items-center px-16 md:pb-80 ">
                 <div className="flex flex-col gap-8 text-center w-full md:w-742">
                     <span className="text-[32px] font-bold text-(--main-red)">À propos</span>
                     <span className="text-sm text-(--black)">
@@ -38,8 +38,8 @@ export default function AboutPage() {
                     <Image src={AboutImg1} className="absolute md:-top-95 md:left-0" alt="Image à propos" fill style={{ objectFit: "cover" }} />
                 </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-16 w-full md:w-1115 px-16 md:px-0 pb-80 md:pb-0">
-                <div className="flex flex-col md:flex-row gap-16 justify-center">
+            <div className="flex flex-col lg:flex-row gap-16 w-full xl:w-1115 px-16 md:px-0 pb-80 md:pb-0">
+                <div className="flex flex-col lg:flex-row gap-16 justify-center">
                     <div className="flex flex-col gap-16 justify-center">
                         <span className="text-lg font-bold text-(--main-red)">Notre mission est simple :</span>
                         <ol className="list-decimal leading-[40px] text-sm ml-18">
