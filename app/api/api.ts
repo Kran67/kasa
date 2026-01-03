@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { cookies } from "next/headers";
+import { propertiesMock } from "../mocks/properties";
 
 /**
  * Récupère la liste des propriétés
@@ -26,12 +27,16 @@ export const getProperties = cache(async () => {
  * @returns {Promise<any>} - Une propriétés ou un objet { error: string }
  */
 export const getLodging = cache(async (id: string) => {
-    const data: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/properties/${id}`, {
-        method: "GET",
-        cache: "no-store",
-        headers: { 'Content-Type': 'application/json', }
-    });
-    return await data.json();
+    if (process.env.NEXT_PUBLIC_MOCK_MODE === "true") {
+        return propertiesMock.find((p) => p.id === id);
+    } else {
+        const data: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/properties/${id}`, {
+            method: "GET",
+            cache: "no-store",
+            headers: { 'Content-Type': 'application/json', }
+        });
+        return await data.json();
+    }
 });
 
 /**
