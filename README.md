@@ -43,7 +43,7 @@ Exécuter :
 Créer un fichier .env à la racine du site et mettre à l'intérieur la constante suivante :
 - NEXT_PUBLIC_API_BASE_URL = http://localhost:3000 (où localhost:3000 est l'url de l'api)
 
-### 3. Lancer le projet
+### 4. Lancer le projet
 
 Exécuter : 
 `````npm run dev`````
@@ -57,7 +57,7 @@ Elle est disponible à cette adresse : https://github.com/OpenClassrooms-Student
 ## Maquettes Figma
 https://www.figma.com/design/UEw5iG40U3V0NeqBr91rd9/KASA-NEW?t=mCFOXmLy3OOMsN9x-0
 
-## Test unitaire
+## Tests unitaires
 
 Exécuter : 
 `````npm run test`````
