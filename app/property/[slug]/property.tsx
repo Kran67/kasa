@@ -66,11 +66,11 @@ export default function Property({ slug }: PropertyProps) {
                         imgHeight={6}
                         text="Retour aux annonces"
                         url="/"
-                        className="text-sm text-(--dark-grey) gap-5 bg-(--light-grey) rounded-[10] py-8 px-16 w-189" />
+                        className="text-sm text-(--dark-grey) gap-5 bg-(--light-grey) rounded-[10px] py-8 px-16 w-189" />
                 </div>
                 <div className="flex flex-col md:flex-row gap-10 w-full md:flex-wrap">
                     <div className="flex flex-col md:flex-row gap-10">
-                        <div className="rounded-[10] w-358 md:w-303 h-357 overflow-hidden">
+                        <div className="rounded-[10px] w-358 md:w-303 h-357 overflow-hidden">
                             {lodging?.pictures[0] && <Image
                                 data-testid="property-image-1"
                                 src={lodging?.pictures[0]}
@@ -82,7 +82,7 @@ export default function Property({ slug }: PropertyProps) {
                         </div>
                         <div className="flex h-109 md:flex-col gap-10">
                             <div className="flex flex-1 gap-10">
-                                <div className="rounded-[10] w-83 md:w-146 h-109 md:h-174 overflow-hidden relative">
+                                <div className="rounded-[10px] w-83 md:w-146 h-109 md:h-174 overflow-hidden relative">
                                     {lodging?.pictures[1] && <Image
                                         data-testid="property-image-2"
                                         src={lodging?.pictures[1]}
@@ -92,7 +92,7 @@ export default function Property({ slug }: PropertyProps) {
                                         style={{ objectFit: "cover" }}
                                         onClick={() => viewCarouselAndActiveImage(true, 1)} />}
                                 </div>
-                                <div className="rounded-[10] w-83 md:w-146 md:h-174 overflow-hidden relative">
+                                <div className="rounded-[10px] w-83 md:w-146 md:h-174 overflow-hidden relative">
                                     {lodging?.pictures[2] && <Image
                                         data-testid="property-image-3"
                                         src={lodging?.pictures[2]}
@@ -104,7 +104,7 @@ export default function Property({ slug }: PropertyProps) {
                                 </div>
                             </div>
                             <div className="flex gap-10">
-                                <div className="rounded-[10] w-83 md:w-146 md:h-174 overflow-hidden relative">
+                                <div className="rounded-[10px] w-83 md:w-146 md:h-174 overflow-hidden relative">
                                     {lodging?.pictures[3] && <Image
                                         data-testid="property-image-4"
                                         src={lodging?.pictures[3]}
@@ -114,7 +114,7 @@ export default function Property({ slug }: PropertyProps) {
                                         style={{ objectFit: "cover" }}
                                         onClick={() => viewCarouselAndActiveImage(true, 3)} />}
                                 </div>
-                                <div className="rounded-[10] w-83 md:w-146 md:h-174 overflow-hidden relative">
+                                <div className="rounded-[10px] w-83 md:w-146 md:h-174 overflow-hidden relative">
                                     {lodging?.pictures[4] && <Image
                                         data-testid="property-image-5"
                                         src={lodging?.pictures[4]}
@@ -127,10 +127,11 @@ export default function Property({ slug }: PropertyProps) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col w-full md:w-345 gap-8 md:h-281 border border-solid border-(--light-grey) rounded-[10] p-24 bg-(--white) order-1 md:order-0">
+                    <div
+                        className="flex flex-col w-full md:w-345 gap-8 md:h-281 border border-solid border-(--light-grey) rounded-[10px] p-24 bg-(--white) order-1 md:order-0">
                         <span className="text-base text-black">Votre hôte</span>
                         <div className="flex gap-18 pt-16 pb-16 items-center">
-                            <div className="rounded-[10] w-81 h-82 overflow-hidden relative">
+                            <div className="rounded-[10px] w-81 h-82 overflow-hidden relative">
                                 {lodging?.host.picture && <Image src={lodging?.host.picture} alt="Image de l'hôte" fill style={{ objectFit: "cover" }} />}
                             </div>
                             <span className="text-base text-black font-normal">{lodging?.host.name}</span>
@@ -139,12 +140,18 @@ export default function Property({ slug }: PropertyProps) {
                                 imgWidth={16}
                                 imgHeight={17}
                                 text={lodging?.rating_avg.toFixed()}
-                                className="gap-4 rounded-[10] p-8 bg-(--light-grey) text-base text-black font-normal cursor-default!" />
+                                className="gap-4 rounded-[10px] p-8 bg-(--light-grey) text-base text-black font-normal cursor-default!" />
                         </div>
-                        <Button clickFunc="alert('Lancer un appel téléphonique')" text="Contacter l’hôte" className="text-sm text-(--white) bg-(--main-red) rounded-[10] py-8 px-32" />
-                        <Button url="/messenging" text="Envoyer un message" className="text-sm text-(--white) bg-(--main-red) rounded-[10] py-8 px-32" />
+                        <Button
+                            clickFunc="alert('Lancer un appel téléphonique')"
+                            text="Contacter l’hôte"
+                            className="text-sm text-(--white) bg-(--main-red) rounded-[10px] py-8 px-32" />
+                        <Button
+                            url="/messenging"
+                            text="Envoyer un message"
+                            className="text-sm text-(--white) bg-(--main-red) rounded-[10px] py-8 px-32" />
                     </div>
-                    <div className="flex flex-col gap-40 md:w-616 bg-(--white) rounded-[10] border boder-solid border-(--light-grey) p-24 order-0 md:order-1">
+                    <div className="flex flex-col gap-40 md:w-616 bg-(--white) rounded-[10px] border boder-solid border-(--light-grey) p-24 order-0 md:order-1">
                         <div className="flex flex-col gap-32">
                             <div className="flex flex-col gap-16">
                                 <span className="text-2xl text-black">{lodging?.title}</span>

@@ -7,53 +7,43 @@ import MenuItem from "@/app/components/ui/MenuItem";
 import Link from "@/app/components/ui/Link";
 import IconButton from "@/app/components/ui/IconButton";
 import Button from "@/app/components/ui/Button";
-import { useUser } from "@/app/contexts/userContext";
-import { Cookies, useCookies } from 'next-client-cookies';
 import { prepareBodyToShowModal } from "@/app/lib/utils";
 
-/**
- * Interface pour des paramétres pour l'affichage du menu actif
- * 
- * @interface PropsPC
- */
 interface HeaderProps {
     activeMenu?: HeaderMenuItems;
+    isMobileView?: boolean;
+    menuVisible?: boolean;
 }
 
-/**
- * Affiche l'entête de page
- * 
- * @function Header
- * @param { activeMenu } HeaderProps
- * @param { HeaderMenuItems? } HeaderProps.activeMenu - Le menu actif
- */
-export default function Header({ activeMenu }: HeaderProps) {
-    const [isMenuVisible, setIsMenuVisible] = useState(false);
-    const { user, clear } = useUser();
-    const cookies: Cookies = useCookies();
+export default function HeaderForStorybook({ activeMenu, isMobileView, menuVisible = false }: HeaderProps) {
+    const [isMenuVisible, setIsMenuVisible] = useState(menuVisible);
+
+    // Mock user et cookies pour Storybook
+    const user = { id: '1', name: 'Test User' };
+    //const cookies = { get: () => null, set: () => { }, remove: () => { } };
 
     const handleLogout = () => {
-        cookies.remove("token");
-        cookies.remove("userId");
-        clear();
+        //cookies.remove("token");
+        //cookies.remove("userId");
+        // clear();
     }
 
     return (
         <header
-            className="flex w-full md:w-782 h-85 md:h-56 rounded-[10px] bg-(--white) md:py-8 md:px-100 items-center justify-between font-normal p-16">
-            <Logo size={LogoSizes.Small} className="flex md:hidden" />
+            className={"flex w-full rounded-[10px] bg-(--white) items-center justify-between font-normal " + (!isMobileView ? "min-w-782 h-56 py-8 px-100" : "min-w-320 h-85 p-16")}>
+            <Logo size={LogoSizes.Small} className={"flex " + (!isMobileView ? "hidden" : "")} />
             <MenuItem
                 text="Accueil"
                 isActive={activeMenu === HeaderMenuItems.Home}
                 url="/"
-                className="hidden md:flex text-sm cursor-pointer hover:text-(--main-red) hover:font-bold w-51" />
+                className={(isMobileView ? "hidden" : "flex") + " text-sm cursor-pointer hover:text-(--main-red) hover:font-bold w-51"} />
             <MenuItem
                 text="À propos"
                 isActive={activeMenu === HeaderMenuItems.About}
                 url="/about"
-                className="hidden md:flex text-sm cursor-pointer hover:text-(--main-red) hover:font-bold w-62" />
-            <Logo size={LogoSizes.Large} className="hidden md:flex" />
-            <div className="flex gap-28 hidden md:flex">
+                className={(isMobileView ? "hidden" : "flex") + " text-sm cursor-pointer hover:text-(--main-red) hover:font-bold w-62"} />
+            <Logo size={LogoSizes.Large} className={(isMobileView ? "hidden" : "flex")} />
+            <div className={(isMobileView ? "hidden" : "flex") + " gap-28"}>
                 <Link text="+Ajouter un logement" className="hidden md:flex text-sm" isActive={true} />
                 <div className="flex gap-8 items-center text-(--main-red)">
                     <IconButton
@@ -91,7 +81,7 @@ export default function Header({ activeMenu }: HeaderProps) {
             </div>
             <IconButton
                 icon={isMenuVisible ? IconButtonImages.Cross : IconButtonImages.Menu}
-                className="md:hidden mr-11 mb-6"
+                className={(isMobileView ? "flex" : "hidden") + " mr-11 mb-6"}
                 imgWidth={isMenuVisible ? 25 : 28}
                 imgHeight={isMenuVisible ? 25 : 20}
                 svgFill={isMenuVisible ? "#0D0D0D" : "#565656"}
@@ -134,6 +124,6 @@ export default function Header({ activeMenu }: HeaderProps) {
                     text="Ajouter un logement"
                     className="flex items-center bg-(--main-red) rounded-[10px] p-8 px-32 text-(--white) w-full content-center" />
             </div>
-        </header >
+        </header>
     );
 }

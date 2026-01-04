@@ -48,17 +48,17 @@ export default function Input({ name, label, type, value, placeHolder, required,
         "flex",
         "flex-col",
         "flex-1",
-        "gap-7",
-        "justify-center",
-        label ? "h-77" : "h-63",
+        showLabel ? "gap-7" : "",
+        "justify-start",
+        showLabel ? "h-77" : "h-63",
         className ?? ""
     ].join(" ");
 
     return (
         <div className={classNames} style={{ "minWidth": width, "maxWidth": width }}>
-            <label className={"text-sm text-(--black) font-medium " + (!showLabel ? "h-0 w-0" : "")} htmlFor={name}>{label}{required ? " *" : ""}</label>
+            <label className={"text-sm text-(--black) font-medium " + (!showLabel ? "hidden" : "")} htmlFor={name}>{label}{required ? " *" : ""}</label>
             <div className={"flex justify-between items-center bg-(--white) border " +
-                (!hasError ? "border-(--light-grey)" : "border-(--error)") + " border-solid rounded-[4px] py-16 px-10 gap-10 h-40"}>
+                (!hasError ? "border-(--light-grey)" : "border-(--error)") + " border-solid rounded-[4px]" + (showLabel ? "py-16" : "") + " px-10 gap-10 h-40"}>
                 <input
                     className="text-sm text-(--black) w-full outline-0"
                     id={name}

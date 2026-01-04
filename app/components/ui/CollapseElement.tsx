@@ -49,7 +49,7 @@ export default function CollapseElement({ title, content }: CollapseElementProps
                         <Tag
                             key={index}
                             text={tag}
-                            className="flex items-center justify-center md:whitespace-nowrap text-xs text-(--dark-grey) font-normal bg-(--light-grey) rounded-[5] py-8 px-8 text-center" />
+                            className="flex items-center justify-center md:whitespace-nowrap text-xs text-(--dark-grey) font-normal bg-(--light-grey) rounded-[5px] py-8 px-8 text-center" />
                     ))}
                 </div>
             </div>

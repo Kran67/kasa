@@ -41,7 +41,7 @@ export default function Button({ text, disabled, className, url, clickFunc, butt
 
     return (
         <button
-            className={"cursor-pointer " + className}
+            className={(disabled ? "opacity-[50%] cursor-not-allowed " : "cursor-pointer ") + className}
             disabled={disabled}
             type={buttonType}
             onClick={handleClick}

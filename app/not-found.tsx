@@ -28,8 +28,8 @@ export default function NotFoundPage() {
                     <span className="text-sm text-(--black) text-center">Il semble que la page que vous cherchez ait pris des vacances… ou n’ait jamais existé.</span>
                 </div>
                 <div className="flex flex-col gap-14 items-center">
-                    <Button text="Accueil" url='/' className="flex justify-center bg-(--main-red) rounded-[10] p-8 px-32 text-(--white) w-200" />
-                    <Button text="Logements" url='/' className="flex justify-center bg-(--main-red) rounded-[10] p-8 px-32 text-(--white) w-200" />
+                    <Button text="Accueil" url='/' className="flex justify-center bg-(--main-red) rounded-[10px] p-8 px-32 text-(--white) w-200" />
+                    <Button text="Logements" url='/' className="flex justify-center bg-(--main-red) rounded-[10px] p-8 px-32 text-(--white) w-200" />
                 </div>
             </div>
             <Footer />

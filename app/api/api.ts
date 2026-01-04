@@ -1,6 +1,7 @@
 import { cache } from "react";
 import { cookies } from "next/headers";
 import { propertiesMock } from "../mocks/properties";
+import { usersMock } from "../mocks/users";
 
 /**
  * Récupère la liste des propriétés
@@ -50,21 +51,25 @@ export const getLodging = cache(async (id: string) => {
 export const getProfile = cache(async (id: string) => {
     const cookieStore = await cookies();
     const token: string | undefined = cookieStore.get("token")?.value;
+    console.log(id);
+    if (process.env.NEXT_PUBLIC_MOCK_MODE === "true") {
+        return usersMock.find((u) => u.id === id);
+    } else {
+        if (!token) return null;
 
-    if (!token) return null;
-
-    try {
-        const data: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${id}`, {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            cache: "no-store",
-        });
-        return await data.json();
-    } catch (err) {
-        console.error("Erreur lors de la récupération du profil :", err);
-        return null;
+        try {
+            const data: Response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${id}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                cache: "no-store",
+            });
+            return await data.json();
+        } catch (err) {
+            console.error("Erreur lors de la récupération du profil :", err);
+            return null;
+        }
     }
 });

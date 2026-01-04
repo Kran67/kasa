@@ -54,7 +54,7 @@ export default function Login() {
                         <Input
                             label="Adresse email"
                             name="email"
-                            type={InputTypes.Text}
+                            type={InputTypes.Email}
                             required={true}
                             value={email}
                             onChange={(e) => {
@@ -76,7 +76,7 @@ export default function Login() {
                     </div>
                     {error && <span className="text-sm text-(--main-red) font-bold">{errorMsg}</span>}
                     <div className="flex flex-col gap-22 w-full md:w-360 items-center">
-                        <Button text="Se connecter" url='' className="flex justify-center bg-(--main-red) rounded-[10] p-8 px-32 text-(--white) md:w-230" />
+                        <Button text="Se connecter" url='' className="flex justify-center bg-(--main-red) rounded-[10px] p-8 px-32 text-(--white) md:w-230" />
                         <div className="flex flex-col gap-12 w-full items-center">
                             <Link className="text-sm text-(--main-red) font-normal text-center" url="/" text="Mot de passe oublié" />
                             <div className="text-sm text-(--main-red) font-normal text-center">

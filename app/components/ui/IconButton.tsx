@@ -9,8 +9,8 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
  * 
  * @interface IconButtonProps
  */
-interface IconButtonProps {
-    icon: IconButtonImages;
+export interface IconButtonProps {
+    icon?: IconButtonImages;
     className?: string;
     url?: string;
     onClick?: () => void;
@@ -21,14 +21,15 @@ interface IconButtonProps {
     svgBgFill?: string;
     svgStroke?: string;
     title?: string;
+    disabled?: boolean;
 }
 
 /**
  * Affiche d'un bouton avec une icône
  * 
  * @function IconButton
- * @param { icon, className, onClick, url, imgWidth, imgHeight, text, svgFill, svgBgFill, svgStroke, title } IconButtonProps - Les proriétés du IconButton
- * @param {IconButtonImages} IconButtonProps.icon - Type d'icône à afficher
+ * @param { icon, className, onClick, url, imgWidth, imgHeight, text, svgFill, svgBgFill, svgStroke, title, disabled } IconButtonProps - Les proriétés du IconButton
+ * @param {IconButtonImages?} IconButtonProps.icon - Type d'icône à afficher
  * @param {string?} IconButtonProps.className - Classes css du bouton
  * @param {function?} IconButtonProps.onClick - Function à executer sur le clique du bouton avant redirection si elle est passée
  * @param {string?} IconButtonProps.url - Url de redirection lors du clique sur le bouton
@@ -39,8 +40,9 @@ interface IconButtonProps {
  * @param {string?} IconButtonProps.svgBgFill - Couleur à appliquer comme fond de l'icône
  * @param {string?} IconButtonProps.svgStroke - Couleur à appliquer comme trait de l'icône
  * @param {string?} IconButtonProps.title - Texte à afficher comme bulle d'information
+ * @param {boolean?} IconButtonProps.disabled - Statut du bouton actif ou non actif
  */
-export default function IconButton({ icon, className, onClick, url, imgWidth, imgHeight, text, svgFill, svgBgFill, svgStroke, title }: IconButtonProps) {
+export default function IconButton({ icon, className, onClick, url, imgWidth, imgHeight, text, svgFill, svgBgFill, svgStroke, title, disabled = false }: IconButtonProps) {
     const router: AppRouterInstance = useRouter();
 
     const handleClick: () => void = () => {
@@ -111,7 +113,7 @@ export default function IconButton({ icon, className, onClick, url, imgWidth, im
 
     return (
         <button
-            className={"flex items-center cursor-pointer whitespace-nowrap " + className}
+            className={"flex items-center cursor-pointer whitespace-nowrap gap-5 " + className}
             onClick={handleClick}
             role="button"
             title={title}>

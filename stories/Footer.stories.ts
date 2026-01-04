@@ -1,0 +1,22 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import Footer from "@/app/components/layout/Footer";
+
+/**
+ * Le composant Footer permet d'afficher un pied de page
+ */
+const meta = {
+    title: 'Components/Footer',
+    component: Footer,
+    parameters: {
+        layout: 'centered',
+    },
+    tags: ['autodocs'],
+} satisfies Meta<typeof Footer>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+/**
+ * Footer
+ */
+export const footer: Story = {};

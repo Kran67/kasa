@@ -12,8 +12,8 @@ interface LinkProps {
     text: string;
     url?: string;
     className?: string;
-    disabled?: boolean;
     onClick?(): void;
+    isActive?: boolean;
 }
 
 /**
@@ -24,10 +24,10 @@ interface LinkProps {
  * @param {string} LinkProps.text - Valeur du lien
  * @param {string?} LinkProps.url - Url de redirection lors du lien
  * @param {string?} LinkProps.className - Classes css du lien
- * @param {boolean?} LinkProps.disabled - Statut du lien actif ou non actif
+ * @isActive {boolean?} LinkProps.isActive - Indique si le lien est le lien actif ou non
  * @param {function?} LinkProps.onClick - Function à executer sur le clique du lien avant redirection si elle est passée
  */
-export default function Link({ text, url = "#", disabled = false, onClick, className }: LinkProps) {
+export default function Link({ text, url = "#", onClick, className, isActive = false }: LinkProps) {
     const router: AppRouterInstance = useRouter();
 
     const handleClick: () => void = () => {
@@ -37,7 +37,7 @@ export default function Link({ text, url = "#", disabled = false, onClick, class
 
     return (
         <a href={url}
-            className={className}
+            className={className + (isActive ? " text-(--main-red)" : " text-black")}
             onClick={handleClick}>
             {text}
         </a>

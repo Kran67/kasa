@@ -85,12 +85,12 @@ export default function Carousel({ images, imageIndex = 0, closeCarousel }: Caro
             {total > 1 && (
                 <>
                     <button
-                        className="prev absolute z-1 top-[50%] text-(--main-red) cursor-pointer rounded-[5] text-[25px] bg-(--light-grey) left-20 w-50 h-50 -translate-y-[50%]"
+                        className="prev absolute z-1 top-[50%] text-(--main-red) cursor-pointer rounded-[5px] text-[25px] bg-(--light-grey) left-20 w-50 h-50 -translate-y-[50%]"
                         onClick={(e) => prevSlide(e)}>
                         &#10096;
                     </button>
                     <button
-                        className="next absolute z-1 top-[50%] text-(--main-red) cursor-pointer rounded-[5] text-[25px] bg-(--light-grey) right-20 w-50 h-50 -translate-y-[50%]"
+                        className="next absolute z-1 top-[50%] text-(--main-red) cursor-pointer rounded-[5px] text-[25px] bg-(--light-grey) right-20 w-50 h-50 -translate-y-[50%]"
                         onClick={(e) => nextSlide(e)}>
                         &#10097;
                     </button>
@@ -109,7 +109,7 @@ export default function Carousel({ images, imageIndex = 0, closeCarousel }: Caro
                 </ul>
             </div>
 
-            <div className="absolute bottom-10 left-[50%] text-sm font-normal text-(--dark-grey) py-4 px-8 rounded-[5] select-none">
+            <div className="absolute bottom-10 left-[50%] text-sm font-normal text-(--dark-grey) py-4 px-8 rounded-[5px] select-none">
                 {currentIndex + 1} / {total}
             </div>
         </aside>

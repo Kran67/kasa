@@ -34,14 +34,25 @@ export default function Checkbox({ id, text, disabled, className, checked = fals
 
     const handleClick = (e: any) => {
         const checkbox = (e.target as HTMLElement).querySelector("input") as HTMLInputElement;
-        setIsChecked(!checkbox.checked);
+        if (!disabled) {
+            setIsChecked(!checkbox.checked);
+        }
     }
 
     return (
-        <div className="flex checkbox-container" onClick={(e) => handleClick(e)}>
-            <input id={id} type="checkbox" className="mr-5" required={required} disabled={disabled} checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />
-            <span className="checkmark rounded-[2px] pointer-events-none"></span>
-            <label htmlFor={id} className={"cursor-pointer  pointer-events-none " + className}>{text}</label>
+        <div
+            className={"checkbox-container flex text-sm select-none items-center " + (disabled ? "opacity-[50%] cursor-not-allowed " : "cursor-pointer ")}
+            onClick={(e) => handleClick(e)}>
+            <input
+                id={id}
+                type="checkbox"
+                className="mr-5 opacity-0 w-0 h-0"
+                required={required}
+                disabled={disabled}
+                checked={isChecked}
+                onChange={(e) => setIsChecked(e.target.checked)} />
+            <span className="checkmark w-12 h-12 border border-1 border-solid border-(--dark-grey) mr-10 rounded-[2px] pointer-events-none"></span>
+            <label htmlFor={id} className={"pointer-events-none " + className}>{text}{required ? " *" : ""}</label>
         </div>
     );
 }

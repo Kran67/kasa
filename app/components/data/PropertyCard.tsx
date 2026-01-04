@@ -42,14 +42,14 @@ export default function PropertyCard({ property }: PropsPC) {
                 icon={IconButtonImages.Heart}
                 imgWidth={16}
                 imgHeight={16}
-                className={"w-32 h-32 absolute right-16 top-16 " + (favorite ? "bg-(--main-red)" : "bg-(--light-grey)") + " z-1 rounded-[5] flex items-center justify-center"}
+                className={"w-32 h-32 absolute right-16 top-16 " + (favorite ? "bg-(--main-red)" : "bg-(--light-grey)") + " z-1 rounded-[5px] flex items-center justify-center"}
                 svgFill={favorite ? "#FFF" : "#FFF"}
                 svgBgFill={favorite ? "#E0C2BA" : "#565656"}
                 svgStroke="#FFF"
                 onClick={() => toggleFavorite(property)}
                 title={favorite ? "Enlever des favoris" : "Ajouter aux favoris"}
             />
-            <div className="relative h-376 overflow-hidden rounded-t-[10]">
+            <div className="relative h-376 overflow-hidden rounded-t-[10px]">
                 <img src={property.cover} alt="Image de la propriété" className="absolute -left-104 max-w-564 h-376" width={1240} height={827} />
             </div>
             <div className="flex flex-col justify-between pt-16 px-24 pb-24 h-176 cursor-pointer" onClick={() => handleClick()}>

@@ -6,8 +6,8 @@ export enum HeaderMenuItems {
 }
 
 export enum LogoSizes {
-    Large,
-    Small
+    Large = "large",
+    Small = "small"
 }
 
 export enum IconButtonImages {
@@ -32,6 +32,7 @@ export enum ButtonTypes {
 export enum InputTypes {
     Text = 'text',
     Password = 'password',
+    Email = 'email',
     Date = 'date'
 }
 
