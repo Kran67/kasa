@@ -65,6 +65,11 @@ Exécuter :
 Résultat :
 ![Tests](app/assets/results/tests/all.jpg)
 
+## StoryBook
+
+Exécuter : 
+`````npm run storybook`````
+
 ---
 
 ## Performance et accessibilité
