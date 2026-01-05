@@ -13,6 +13,7 @@ import Image from 'next/image';
 interface CollapseElementProps {
     title: string;
     content?: string[];
+    opened?: boolean;
 }
 
 /**
@@ -22,9 +23,10 @@ interface CollapseElementProps {
  * @param { title, content } CollapseElementProps - Les proriétés de l'élément retractable
  * @param {string} CollapseElementProps.title - Titre de l'élément retractable
  * @param {string[]?} CollapseElementProps.content - Liste des éléments à cacher
+ * @param {boolean?} CollapseElementProps.opened - Indique si le contenu est visible ou non
  */
-export default function CollapseElement({ title, content }: CollapseElementProps) {
-    const [isOpen, setIsOpen] = useState(false);
+export default function CollapseElement({ title, content, opened = false }: CollapseElementProps) {
+    const [isOpen, setIsOpen] = useState(opened);
     const ref = useRef(null);
     const [contentHeight, setContentHeight] = useState(0);
 
