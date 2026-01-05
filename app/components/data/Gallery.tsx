@@ -4,6 +4,8 @@ import { Property } from "@/app/interfaces/property";
 import PropertyCard from "@/app/components/data/PropertyCard";
 import { favoritesService } from "@/app/services/favoritesService";
 import { propertiesService } from "@/app/services/propertiesService";
+import { useEffect } from "react";
+import { prepareBodyToShowModal } from "@/app/lib/utils";
 
 /**
  * Ajout les métadata à la page
@@ -60,6 +62,10 @@ export default function Gallery({ onlyFav }: GalleryProps) {
     if (properties?.error) {
         properties = []
     }
+
+    useEffect(() => {
+        prepareBodyToShowModal("");
+    }, [properties]);
 
     return (
         <section>
