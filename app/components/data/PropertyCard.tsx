@@ -50,7 +50,7 @@ export default function PropertyCard({ property }: PropsPC) {
                 title={favorite ? "Enlever des favoris" : "Ajouter aux favoris"}
             />
             <div className="relative h-376 overflow-hidden rounded-t-[10px]">
-                <img src={property.cover} alt="Image de la propriété" className="absolute -left-104 max-w-564 h-376" width={1240} height={827} />
+                <img src={property.cover} alt="Image de la propriété" className="absolute md:-left-104 md:max-w-564 h-376" width={1240} height={827} />
             </div>
             <div className="flex flex-col justify-between pt-16 px-24 pb-24 h-176 cursor-pointer" onClick={() => handleClick()}>
                 <div className="flex flex-col gap-8">

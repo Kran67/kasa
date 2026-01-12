@@ -24,7 +24,7 @@ export const metadata: Metadata = {
  */
 export default function MessengingPage() {
   return (
-    <main className="flex flex-col gap-51 md:gap-40 w-full items-center md:pt-40 md:px-140">
+    <main className="flex flex-col md:gap-51 md:gap-40 w-full items-center md:pt-40 md:px-140">
       <Header activeMenu={HeaderMenuItems.Messaging} />
       <div className="flex rounded-[10px] w-full xl:w-1059">
         <div className="flex flex-col gap-7 border-r-1 border-solid border-(--light-grey) py-11 lg:px-8 w-full lg:w-376 bg-(--white) ">

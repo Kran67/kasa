@@ -51,15 +51,15 @@ export default function Property({ slug }: PropertyProps) {
     }, [viewCarousel]);
 
     return (
-        <main className="flex flex-col gap-10 md:gap-85 w-full items-center md:pt-40 md:px-140 relative">
+        <main className="flex flex-col gap-10 lg:gap-85 w-full items-center lg:pt-40 lg:px-140 relative">
             {viewCarousel &&
                 createPortal(
                     <Carousel images={lodging?.pictures} imageIndex={carouselImageIndex} closeCarousel={() => setViewCarousel(false)} onIndexChange={setCarouselImageIndex} />,
                     document.body
                 )}
             <Header />
-            <div className="flex flex-col w-full gap-10 md:gap-24 md:w-970 px-16 pb-80 md:px-0 md:pb-0">
-                <div className="md:flex md:flex-row md:gap-10 w-full md:py-16 md:px-7 border-b-0 md:border-b-1 border-solid border-b-(--light-grey)">
+            <div className="flex flex-col w-full gap-10 lg:gap-24 lg:w-970 px-16 pb-80 lg:px-0 lg:pb-0">
+                <div className="lg:flex lg:flex-row lg:gap-10 w-full lg:py-16 lg:px-7 border-b-0 lg:border-b-1 border-solid border-b-(--light-grey)">
                     <IconButton
                         icon={IconButtonImages.LeftArrow}
                         imgWidth={8}
@@ -68,21 +68,21 @@ export default function Property({ slug }: PropertyProps) {
                         url="/"
                         className="text-sm text-(--dark-grey) gap-5 bg-(--light-grey) rounded-[10px] py-8 px-16 w-189" />
                 </div>
-                <div className="flex flex-col md:flex-row gap-10 w-full md:flex-wrap">
-                    <div className="flex flex-col md:flex-row gap-10">
-                        <div className="rounded-[10px] w-358 md:w-303 h-357 overflow-hidden">
+                <div className="flex flex-col lg:flex-row gap-10 w-full lg:flex-wrap">
+                    <div className="flex flex-col lg:flex-row gap-10">
+                        <div className="flex w-full lg:w-303 h-357 overflow-hidden md:justify-center rounded-[10px] ">
                             {lodging?.pictures[0] && <Image
                                 data-testid="property-image-1"
                                 src={lodging?.pictures[0]}
                                 alt="Image de la propriété n°1"
-                                className="h-357 w-635 md:w-535 max-w-1240 cursor-pointer"
+                                className="h-357 w-635 lg:w-535 max-w-1240 cursor-pointer rounded-[10px] "
                                 width={1240}
                                 height={827}
                                 onClick={() => viewCarouselAndActiveImage(true, 0)} />}
                         </div>
-                        <div className="flex h-109 md:flex-col gap-10">
-                            <div className="flex flex-1 gap-10">
-                                <div className="rounded-[10px] w-83 md:w-146 h-109 md:h-174 overflow-hidden relative">
+                        <div className="flex h-109 lg:flex-col gap-10 justify-center lg:justify-normal">
+                            <div className="flex gap-10">
+                                <div className="rounded-[10px] w-65 lg:w-146 h-109 lg:h-174 overflow-hidden relative">
                                     {lodging?.pictures[1] && <Image
                                         data-testid="property-image-2"
                                         src={lodging?.pictures[1]}
@@ -92,7 +92,7 @@ export default function Property({ slug }: PropertyProps) {
                                         style={{ objectFit: "cover" }}
                                         onClick={() => viewCarouselAndActiveImage(true, 1)} />}
                                 </div>
-                                <div className="rounded-[10px] w-83 md:w-146 md:h-174 overflow-hidden relative">
+                                <div className="rounded-[10px] w-65 lg:w-146 lg:h-174 overflow-hidden relative">
                                     {lodging?.pictures[2] && <Image
                                         data-testid="property-image-3"
                                         src={lodging?.pictures[2]}
@@ -104,7 +104,7 @@ export default function Property({ slug }: PropertyProps) {
                                 </div>
                             </div>
                             <div className="flex gap-10">
-                                <div className="rounded-[10px] w-83 md:w-146 md:h-174 overflow-hidden relative">
+                                <div className="rounded-[10px] w-65 lg:w-146 lg:h-174 overflow-hidden relative">
                                     {lodging?.pictures[3] && <Image
                                         data-testid="property-image-4"
                                         src={lodging?.pictures[3]}
@@ -114,7 +114,7 @@ export default function Property({ slug }: PropertyProps) {
                                         style={{ objectFit: "cover" }}
                                         onClick={() => viewCarouselAndActiveImage(true, 3)} />}
                                 </div>
-                                <div className="rounded-[10px] w-83 md:w-146 md:h-174 overflow-hidden relative">
+                                <div className="rounded-[10px] w-65 lg:w-146 lg:h-174 overflow-hidden relative">
                                     {lodging?.pictures[4] && <Image
                                         data-testid="property-image-5"
                                         src={lodging?.pictures[4]}
@@ -128,7 +128,7 @@ export default function Property({ slug }: PropertyProps) {
                         </div>
                     </div>
                     <div
-                        className="flex flex-col w-full md:w-345 gap-8 md:h-281 border border-solid border-(--light-grey) rounded-[10px] p-24 bg-(--white) order-1 md:order-0">
+                        className="flex flex-col w-full lg:w-345 gap-8 lg:h-281 border border-solid border-(--light-grey) rounded-[10px] p-24 bg-(--white) order-1 lg:order-0">
                         <span className="text-base text-black">Votre hôte</span>
                         <div className="flex gap-18 pt-16 pb-16 items-center">
                             <div className="rounded-[10px] w-81 h-82 overflow-hidden relative">
@@ -151,7 +151,7 @@ export default function Property({ slug }: PropertyProps) {
                             text="Envoyer un message"
                             className="text-sm text-(--white) bg-(--main-red) rounded-[10px] py-8 px-32" />
                     </div>
-                    <div className="flex flex-col gap-40 md:w-616 bg-(--white) rounded-[10px] border boder-solid border-(--light-grey) p-24 order-0 md:order-1">
+                    <div className="flex flex-col gap-40 lg:w-616 bg-(--white) rounded-[10px] border boder-solid border-(--light-grey) p-24 order-0 lg:order-1">
                         <div className="flex flex-col gap-32">
                             <div className="flex flex-col gap-16">
                                 <span className="text-2xl text-black">{lodging?.title}</span>
